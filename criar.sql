@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS GRUPO;
 DROP TABLE IF EXISTS EQUIPA;
 DROP TABLE IF EXISTS JOGADOR;
 
-CREATE TABLE JOGADOR(
+CREATE TABLE Jogador(
     nomeJogador VARCHAR(255) NOT NULL PRIMARY KEY,
     nGolos INT NOT NULL,
     nacionalidade VARCHAR(255),
@@ -17,7 +17,7 @@ CREATE TABLE JOGADOR(
     tempoJogado INT
 );
 
-CREATE TABLE EQUIPA(
+CREATE TABLE Equipa(
     nomeEquipa VARCHAR(255) PRIMARY KEY,
     jogosJogados INT,
     golosTotais INT,
@@ -27,21 +27,21 @@ CREATE TABLE EQUIPA(
     golosSofridos INT,
     vitorias INT,
     derrotas INT,
-    empates INT
+    empates INT 
 );
 
-CREATE TABLE GRUPO(
+CREATE TABLE Grupo(
     idGrupo INT PRIMARY KEY
 );
 
-CREATE TABLE ESTADO(
+CREATE TABLE Estado(
     tipoEstado VARCHAR(255) PRIMARY KEY
     CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'grupos' OR tipoEstado == 'oitavos' OR tipoEstado == 'quartos' OR tipoEstado == 'semis' OR tipoEstado == 'final')
 );
 
-CREATE TABLE JOGO(
+CREATE TABLE Jogo(
     idJogo VARCHAR(255) PRIMARY KEY,
-    resultado INT,
+    resultado VARCHAR(255),
     nFaltas INT,
     posseDeBola INT,
     cartoesAmarelos INT,
@@ -56,8 +56,8 @@ CREATE TABLE JOGO(
 
 .read povoar.sql
 
-SELECT * FROM JOGADOR;
-SELECT * FROM EQUIPA;
-SELECT * FROM GRUPO;
-SELECT * FROM ESTADO;
-SELECT * FROM JOGO;
+SELECT * FROM Jogador;
+SELECT * FROM Equipa;
+SELECT * FROM Grupo;
+SELECT * FROM Estado;
+SELECT * FROM Jogo;
