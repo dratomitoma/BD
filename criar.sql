@@ -5,7 +5,7 @@ PRAGMA foreign_keys=ON;
 DROP TABLE IF EXISTS JOGO;
 DROP TABLE IF EXISTS ESTATISTICASJOGADOR;
 DROP TABLE IF EXISTS ESTATISTICASEQUIPA;
-DROP TABLE IF EXISTS ESTATISTICASJOGO;
+DROP TABLE IF EXISTS ESTATISTICASDEJOGO;
 DROP TABLE IF EXISTS ESTADO;
 DROP TABLE IF EXISTS GRUPO;
 DROP TABLE IF EXISTS EQUIPA;
@@ -24,7 +24,7 @@ CREATE TABLE JOGADOR(
 CREATE TABLE EQUIPA(
     nomeEquipa VARCHAR(255)  NOT NULL PRIMARY KEY,
     jogosJogados TINYINT NOT NULL,
-    golosTotais TINYINT NOT NULL,
+    golosTotais TINYINT NOT NULL
 );
 
 CREATE TABLE GRUPO(
@@ -33,7 +33,7 @@ CREATE TABLE GRUPO(
 
 CREATE TABLE ESTADO(
     tipoEstado VARCHAR(255) NOT NULL PRIMARY KEY,
-    CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'grupos' OR tipoEstado == 'oitavos' OR tipoEstado == 'quartos' OR tipoEstado == 'semis' OR tipoEstado == 'final')
+    CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'fase-de-grupos' OR tipoEstado == 'oitavos-de-final' OR tipoEstado == 'quartos-de-final' OR tipoEstado == 'semi-final' OR tipoEstado == 'final')
 );
 
 CREATE TABLE ESTATISTICASDEJOGO(
@@ -60,12 +60,12 @@ CREATE TABLE ESTATISTICASEQUIPA(
 CREATE TABLE ESTATISTICASJOGADOR(
     golosMarcados TINYINT NOT NULL,
     assistencias TINYINT NOT NULL,
-    passesRealizados INT NOT NULL
+    passesRealizados INT NOT NULL,
     cortesRealizados INT NOT NULL,
     cartoesAmarelos TINYINT NOT NULL,
     cartoesVermelhos TINYINT NOT NULL,
     faltasCometidas TINYINT NOT NULL,
-    golosDefendidos INT NOT NULL,
+    golosDefendidos INT NOT NULL
 );
 
 CREATE TABLE JOGO(
@@ -76,14 +76,13 @@ CREATE TABLE JOGO(
     Data VARCHAR(255) NOT NULL
 );
 
+.read povoar.sql
 
 SELECT * FROM JOGADOR;
 SELECT * FROM EQUIPA;
 SELECT * FROM GRUPO;
 SELECT * FROM ESTADO;
-SELECT * FROM ESTATISTICASJOGO;
+SELECT * FROM ESTATISTICASDEJOGO;
 SELECT * FROM ESTATISTICASEQUIPA;
 SELECT * FROM ESTATISTICASJOGADOR;
 SELECT * FROM JOGO;
-
--.read povoar.sql
