@@ -3,7 +3,9 @@
 PRAGMA foreign_keys=ON;
 
 DROP TABLE IF EXISTS Jogo;
+DROP TABLE IF EXISTS Arbitro;
 DROP TABLE IF EXISTS EstatisticasJogador;
+DROP TABLE IF EXISTS estadoVisita;
 DROP TABLE IF EXISTS EstatisticasEquipa;
 DROP TABLE IF EXISTS EstatisticasDeJogo;
 DROP TABLE IF EXISTS Estado;
@@ -12,13 +14,15 @@ DROP TABLE IF EXISTS Equipa;
 DROP TABLE IF EXISTS Jogador;
 
 CREATE TABLE Jogador(
-    nomeJogador VARCHAR(255) NOT NULL PRIMARY KEY,
+    idJogador INT NOT NULL PRIMARY KEY,
+    nomeJogador VARCHAR(255) NOT NULL,
     nGolos TINYINT NOT NULL,
     nacionalidade VARCHAR(255) NOT NULL,
     numero TINYINT NOT NULL,
     jogosJogados TINYINT NOT NULL,
     tempoJogado TINYINT NOT NULL,
-    posicao VARCHAR(255) NOT NULL
+    posicao VARCHAR(255) NOT NULL,
+    idade TINYINT NOT NULL
 );
 
 
@@ -29,12 +33,13 @@ CREATE TABLE Equipa(
 );
 
 CREATE TABLE Grupo(
-    idGrupo TINYINT NOT NULL PRIMARY KEY
+    idGrupo TINYINT NOT NULL PRIMARY KEY,
+    CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
 );
 
 CREATE TABLE Estado(
     tipoEstado VARCHAR(255) NOT NULL PRIMARY KEY,
-    CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'fase-de-grupos' OR tipoEstado == 'oitavos-de-final' OR tipoEstado == 'quartos-de-final' OR tipoEstado == 'semi-final' OR tipoEstado == 'final')
+    CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'pre-eliminatorias' OR tipoEstado == 'fase-de-grupos' OR tipoEstado == 'oitavos-de-final' OR tipoEstado == 'quartos-de-final' OR tipoEstado == 'semi-final' OR tipoEstado == 'final')
 );
 
 CREATE TABLE EstatisticasDeJogo(
@@ -58,6 +63,11 @@ CREATE TABLE EstatisticasEquipa(
     empates TINYINT NOT NULL
 );
 
+CREATE TABLE estadoVisita(
+    tipoEstadoVisita VARCHAR(255) NOT NULL,
+    CONSTRAINT check_tipoEstadoVisita CHECK (tipoEstadoVisita == 'visitada' OR tipoEstadoVisita == 'visitante')
+);
+
 CREATE TABLE EstatisticasJogador(
     golosMarcados TINYINT NOT NULL,
     assistencias TINYINT NOT NULL,
@@ -77,6 +87,14 @@ CREATE TABLE Jogo(
     dataJogo VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE Arbitro(
+    idArbitro INT NOT NULL PRIMARY KEY,
+    nomeArbitro VARCHAR(255) NOT NULL,
+    idade TINYINT NOT NULL,
+    nivel TINYINY NOT NULL,
+    CONSTRAINT check_nivel CHECK(nivel>=1 AND nivel<=9)
+);
+
 .read povoar.sql
 
 SELECT * FROM Jogador;
@@ -85,5 +103,7 @@ SELECT * FROM Grupo;
 SELECT * FROM Estado;
 SELECT * FROM EstatisticasDeJogo;
 SELECT * FROM EstatisticasEquipa;
+SELECT * FROM estadoVisita
 SELECT * FROM EstatisticasJogador;
+SELECT * FROM Arbitro;
 SELECT * FROM Jogo;
