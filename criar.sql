@@ -5,7 +5,7 @@ PRAGMA foreign_keys=ON;
 DROP TABLE IF EXISTS Jogo;
 DROP TABLE IF EXISTS Arbitro;
 DROP TABLE IF EXISTS EstatisticasJogador;
-DROP TABLE IF EXISTS estadoVisita;
+DROP TABLE IF EXISTS EstadoVisita;
 DROP TABLE IF EXISTS EstatisticasEquipa;
 DROP TABLE IF EXISTS EstatisticasDeJogo;
 DROP TABLE IF EXISTS Estado;
@@ -34,7 +34,7 @@ CREATE TABLE Equipa(
 
 CREATE TABLE Grupo(
     idGrupo TINYINT NOT NULL PRIMARY KEY,
-    CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
+    CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' OR idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
 );
 
 CREATE TABLE Estado(
@@ -63,7 +63,7 @@ CREATE TABLE EstatisticasEquipa(
     empates TINYINT NOT NULL
 );
 
-CREATE TABLE estadoVisita(
+CREATE TABLE EstadoVisita(
     tipoEstadoVisita VARCHAR(255) NOT NULL,
     CONSTRAINT check_tipoEstadoVisita CHECK (tipoEstadoVisita == 'visitada' OR tipoEstadoVisita == 'visitante')
 );
@@ -79,23 +79,34 @@ CREATE TABLE EstatisticasJogador(
     golosDefendidos INT NOT NULL
 );
 
-CREATE TABLE Jogo(
-    idJogo VARCHAR(255) NOT NULL PRIMARY KEY,
-    eliminatoria VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado),
-    nGolosVisitante TINYINT NOT NULL,
-    nGolosVisitada TINYINT NOT NULL,
-    dataJogo VARCHAR(255) NOT NULL
-);
-
 CREATE TABLE Arbitro(
     idArbitro INT NOT NULL PRIMARY KEY,
     nomeArbitro VARCHAR(255) NOT NULL,
     idade TINYINT NOT NULL,
-    nivel TINYINY NOT NULL,
+    nivel TINYINT NOT NULL,
     CONSTRAINT check_nivel CHECK(nivel>=1 AND nivel<=9)
 );
 
-.read povoar.sql
+CREATE TABLE Jogo(
+    idJogo VARCHAR(255) NOT NULL PRIMARY KEY,
+    eliminatoria VARCHAR(255) NOT NULL,
+    nGolosVisitada TINYINT NOT NULL,
+    nGolosVisitante TINYINT NOT NULL,
+    dataJogo VARCHAR(255) NOT NULL
+);
+
+/*.read povoar.sql*/
+
+insert into Jogador values (1, 'joka' , 2, 'portuguese', 7,2,40,'PL', 20);
+insert into Equipa values ('FC Porto', 2, 7);
+insert into Grupo values ('B');
+insert into Estado values ('fase-de-grupos');
+insert into EstatisticasDeJogo values('fase-de-grupos', '1-0', '3-2', '60-40', '7-5', '20-3', '200-100', '20-0');
+insert into EstatisticasEquipa values (6, 1, 5, 0, 2, 0, 0);
+insert into EstadoVisita values ('visitante');
+insert into EstatisticasJogador values(3, 1, 57, 7, 1, 0, 3, 0);
+insert into Arbitro values(2, 'Tiago', 32, 3);
+insert into Jogo values('FC Porto - Real Madrid', 'final', 4, 3, '17/11/2022');
 
 SELECT * FROM Jogador;
 SELECT * FROM Equipa;
@@ -103,7 +114,7 @@ SELECT * FROM Grupo;
 SELECT * FROM Estado;
 SELECT * FROM EstatisticasDeJogo;
 SELECT * FROM EstatisticasEquipa;
-SELECT * FROM estadoVisita
+SELECT * FROM EstadoVisita;
 SELECT * FROM EstatisticasJogador;
 SELECT * FROM Arbitro;
 SELECT * FROM Jogo;
