@@ -128,18 +128,7 @@ CREATE TABLE Jogo(
     CHECK (nGolosVisitante >= 0)
 );
 
-/*.read povoar.sql*/
-
-insert into Jogador values (1, 'joka' , 2, 'portuguese', 7,2,40,'PL', 20);
-insert into Equipa values ('FC Porto', 2, 7);
-insert into Grupo values ('B');
-insert into Estado values ('fase-de-grupos');
-insert into EstatisticasDeJogo values('fase-de-grupos', '1-0', '3-2', '60-40', '7-5', '20-3', '200-100', '20-0');
-insert into EstatisticasEquipa values (6, 1, 5, 0, 2, 0, 0);
-insert into EstadoVisita values ('visitante');
-insert into EstatisticasJogador values(3, 1, 57, 7, 1, 0, 3, 0);
-insert into Arbitro values(2, 'Tiago', 32, 3);
-insert into Jogo values('FC Porto - Real Madrid', 'fase-de-grupos', 4, 3, '17/11/2022');
+.read povoar.sql
 
 SELECT * FROM Jogador;
 SELECT * FROM Equipa;
