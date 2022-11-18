@@ -112,7 +112,7 @@ CREATE TABLE Arbitro(
     idade TINYINT NOT NULL,
     nivel TINYINT NOT NULL,
 
-    CHECK (idArbitro >= 0),
+    CHECK (idArbitro >= 1),
     CONSTRAINT check_idade CHECK (idade >= 17 AND idade <= 85),
     CONSTRAINT check_nivel CHECK (nivel>=1 AND nivel<=9)
 );
