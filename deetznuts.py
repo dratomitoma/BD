@@ -109,266 +109,199 @@ listanomes=[ "James","Mary"
 ,"Philip" ,"Alexis"
 ,"Louis" ,"Lori"]
 
-listapaises=[
-
-    "Afeganistão",
-    "África do Sul",
-    "Akrotiri",
-    "Albânia",
-    "Alemanha",
-    "Andorra",
-    "Angola",
-    "Anguila",
-    "Antárctida",
-    "Antígua e Barbuda",
-    "Arábia Saudita",
-    "Arctic Ocean",
-    "Argélia",
-    "Argentina",
-    "Arménia",
-    "Aruba",
-    "Ashmore and Cartier Islands",
-    "Atlantic Ocean",
-    "Austrália",
-    "Áustria",
-    "Azerbaijão",
-    "Baamas",
-    "Bangladeche",
-    "Barbados",
-    "Barém",
-    "Bélgica",
-    "Belize",
-    "Benim",
-    "Bermudas",
-    "Bielorrússia",
-    "Birmânia",
-    "Bolívia",
-    "Bósnia e Herzegovina",
-    "Botsuana",
-    "Brasil",
-    "Brunei",
-    "Bulgária",
-    "Burquina Faso",
-    "Burúndi",
-    "Butão",
-    "Cabo Verde",
-    "Camarões",
-    "Camboja",
-    "Canadá",
-    "Catar",
-    "Cazaquistão",
-    "Chade",
-    "Chile",
-    "China",
-    "Chipre",
-    "Clipperton Island",
-    "Colômbia",
-    "Comores",
-    "Congo-Brazzaville",
-    "Congo-Kinshasa",
-    "Coral Sea Islands",
-    "Coreia do Norte",
-    "Coreia do Sul",
-    "Costa do Marfim",
-    "Costa Rica",
-    "Croácia",
-    "Cuba",
-    "Curacao",
-    "Dhekelia",
-    "Dinamarca",
-    "Domínica",
-    "Egipto",
-    "Emiratos Árabes Unidos",
-    "Equador",
-    "Eritreia",
-    "Eslováquia",
-    "Eslovénia",
-    "Espanha",
-    "Estados Unidos",
-    "Estónia",
-    "Etiópia",
-    "Faroé",
-    "Fiji",
-    "Filipinas",
-    "Finlândia",
-    "França",
-    "Gabão",
-    "Gâmbia",
-    "Gana",
-    "Gaza Strip",
-    "Geórgia",
-    "Geórgia do Sul e Sandwich do Sul",
-    "Gibraltar",
-    "Granada",
-    "Grécia",
-    "Gronelândia",
-    "Guame",
-    "Guatemala",
-    "Guernsey",
-    "Guiana",
-    "Guiné",
-    "Guiné Equatorial",
-    "Guiné-Bissau",
-    "Haiti",
-    "Honduras",
-    "Hong Kong",
-    "Hungria",
-    "Iémen",
-    "Ilha Bouvet",
-    "Ilha do Natal",
-    "Ilha Norfolk",
-    "Ilhas Caimão",
-    "Ilhas Cook",
-    "Ilhas dos Cocos",
-    "Ilhas Falkland",
-    "Ilhas Heard e McDonald",
-    "Ilhas Marshall",
-    "Ilhas Salomão",
-    "Ilhas Turcas e Caicos",
-    "Ilhas Virgens Americanas",
-    "Ilhas Virgens Britânicas",
-    "Índia",
-    "Indian Ocean",
-    "Indonésia",
-    "Irão",
-    "Iraque",
-    "Irlanda",
-    "Islândia",
-    "Israel",
-    "Itália",
-    "Jamaica",
-    "Jan Mayen",
-    "Japão",
-    "Jersey",
-    "Jibuti",
-    "Jordânia",
-    "Kosovo",
-    "Kuwait",
-    "Laos",
-    "Lesoto",
-    "Letónia",
-    "Líbano",
-    "Libéria",
-    "Líbia",
-    "Listenstaine",
-    "Lituânia",
-    "Luxemburgo",
-    "Macau",
-    "Macedónia",
-    "Madagáscar",
-    "Malásia",
-    "Malávi",
-    "Maldivas",
-    "Mali",
-    "Malta",
-    "Isle of Man",
-    "Marianas do Norte",
-    "Marrocos",
-    "Maurícia",
-    "Mauritânia",
-    "México",
-    "Micronésia",
-    "Moçambique",
-    "Moldávia",
-    "Mónaco",
-    "Mongólia",
-    "Monserrate",
-    "Montenegro",
-    "Mundo",
-    "Namíbia",
-    "Nauru",
-    "Navassa Island",
-    "Nepal",
-    "Nicarágua",
-    "Níger",
-    "Nigéria",
-    "Niue",
-    "Noruega",
-    "Nova Caledónia",
-    "Nova Zelândia",
-    "Omã",
-    "Pacific Ocean",
-    "Países Baixos",
-    "Palau",
-    "Panamá",
-    "Papua-Nova Guiné",
-    "Paquistão",
-    "Paracel Islands",
-    "Paraguai",
-    "Peru",
-    "Pitcairn",
-    "Polinésia Francesa",
-    "Polónia",
-    "Porto Rico",
-    "Portugal",
-    "Quénia",
-    "Quirguizistão",
-    "Quiribáti",
-    "Reino Unido",
-    "República Centro-Africana",
-    "República Dominicana",
-    "Roménia",
-    "Ruanda",
-    "Rússia",
-    "Salvador",
-    "Samoa",
-    "Samoa Americana",
-    "Santa Helena",
-    "Santa Lúcia",
-    "São Bartolomeu",
-    "São Cristóvão e Neves",
-    "São Marinho",
-    "São Martinho",
-    "São Pedro e Miquelon",
-    "São Tomé e Príncipe",
-    "São Vicente e Granadinas",
-    "Sara Ocidental",
-    "Seicheles",
-    "Senegal",
-    "Serra Leoa",
-    "Sérvia",
-    "Singapura",
-    "Sint Maarten",
-    "Síria",
-    "Somália",
-    "Southern Ocean",
-    "Spratly Islands",
-    "Sri Lanca",
-    "Suazilândia",
-    "Sudão",
-    "Sudão do Sul",
-    "Suécia",
-    "Suíça",
-    "Suriname",
-    "Svalbard e Jan Mayen",
-    "Tailândia",
-    "Taiwan",
-    "Tajiquistão",
-    "Tanzânia",
-    "Território Britânico do Oceano Índico",
-    "Territórios Austrais Franceses",
-    "Timor Leste",
-    "Togo",
-    "Tokelau",
-    "Tonga",
-    "Trindade e Tobago",
-    "Tunísia",
-    "Turquemenistão",
-    "Turquia",
-    "Tuvalu",
-    "Ucrânia",
-    "Uganda",
-    "Uruguai",
-    "Usbequistão",
-    "Vanuatu",
-    "Vaticano",
-    "Venezuela",
-    "Vietname",
-    "Wake Island",
-    "Wallis e Futuna",
-    "West Bank",
-    "Zâmbia",
-    "Zimbabué"]
+nacionalidades=[
+"afegão",
+"sul-africano",	
+"albanês",	
+"alemmão",
+"andorrano",	
+"angolano",	
+"antiguano",	
+"saudito",
+"argelino",	
+"argentino",	
+"armênio",
+"australiano",	
+"austríaco",	
+"azerbaijano",	
+"bahamiano",	
+"bareinita",	 
+"bengalês",	
+"barbadiano",	 
+"bielo-russo",	
+"belga",
+"belizenho",	
+"beninense",	 
+"boliviano",	
+"bósnio",
+"bechuano",	
+"brasileiro",	
+"bruneano",	
+"búlgaro",
+"burquinense",	
+"burundinês",	
+"butanês",	
+"caboverdiano",	
+"camaronês",	 
+"cambojano",	
+"canadense",
+"catariano",	
+"cazaque",	
+"chadiano",	
+"chileno",
+"chinês",
+"cipriota",
+"colombiano",
+"congolês",
+"norte-coreano",	
+"sul-coreano",	
+"costa-marfinense",
+"costarriquenho",	
+"croata",
+"cubano",
+"dinamarquês",
+"djibutiano",	 
+"dominicano",	
+"egípcio",
+"salvadorenho",	
+"árabe",
+"equatoriano",	
+"eritreu",	
+"eslovaco",	
+"esloveno",	
+"espanhol",	
+"americano",	
+"estoniano",	
+"suazi",
+"etíope",	
+"fijiano",
+"filipino",	
+"finlandês",	
+"francês",	
+"gabonês",	
+"gambiano",		
+"ganês",
+"georgiano",	
+"granadino",	
+"grego",
+"guatemalteco",	
+"guianês",	
+"guineano",	
+"guineense",	
+"guinéu-equatoriano",	
+"haitiano",	
+"holandês",	
+"hondurenho",	
+"húngaro",
+"iemenita",
+"marshalino",	 
+"mauriciano",	
+"salomônico",	
+"indiano",
+"indonésio",	
+"iraniano",	
+"iraquiano",	
+"irlandês",	
+"islandês",	
+"israelense",	
+"italiano",	
+"jamaicano",	
+"japonês",	
+"jordaniano",	
+"kuwaitiano",		
+"laosiano",	
+"lesoto",
+"letão",
+"libanês",	
+"liberiano",	
+"líbio",
+"liechtensteinense",
+"lituano",
+"luxemburguês",	
+"macedônio",	
+"malgaxe",	
+"malai",
+"malauiano",	
+"maldivo",	
+"malinês",	
+"maltês",
+"marroquino",	
+"mauritano",	
+"mexicano",	
+"micronésio",	 
+"moçambicano",	
+"birmanês",	
+"moldávio",	
+"monegasco",	
+"mongol",
+"montenegrino",	
+"namibiano",	
+"nauruano",	
+"nepalês",	
+"nicaraguense",
+"nigerino",	
+"nigeriano",	
+"norueguês",	 
+"neozelandês",	
+"omani",
+"palauano",	
+"palestino",	
+"panamenho",	
+"papuásio",	
+"paquistanês",	
+"paraguaio",	
+"peruano",
+"polaco",
+"português",	
+"queniano",	
+"quiribatiano",	
+"quirguiz",
+"inglês",	 
+"centro-africano",	
+"dominicano",	
+"tcheco",	
+"romeno",	
+"ruandês",	
+"russo",	
+"samoano",	 
+"samarinês",
+"santa-luciense",
+"são-cristovense",
+"são-tomense",	
+"são-vicentino",
+"seichelense",
+"senegalês",	
+"leonês",	 
+"sérvio",	
+"singapuriano",	
+"sírio",	
+"cingalês",	
+"somali",	 
+"sudanês",	
+"sudanês",	
+"suéco",	
+"suíço",	
+"surinamês",	
+"tajique",	
+"tailandês",	
+"tanzaniano",	
+"timorense",	
+"togonês",	
+"tongalês",	
+"trinitino",	
+"tunisiano",
+"turco",	
+"turcomeno",	
+"tuvaluano",	
+"ucraniano",	
+"ugandense",	
+"uruguaio",	
+"usbeque",	
+"vanuatuense",	
+"venezuelano",	
+"vietnamita",
+"zambiano",	
+"zimbabuano"	]
 listaequipasxdddd=[
     "Palmeiras",
     "River Plate",
@@ -404,7 +337,7 @@ listaequipasxdddd=[
     "América Mineiro" 
 ]
 listafase=[
-    "fase-de-grupos","oitavos-de-final","quartos-de-final","semi-final","final"
+    "pre-eliminatorias","fase-de-grupos","oitavos-de-final","quartos-de-final","semi-final","final"
 ]
 listapos=[
     "GR","DD","DC","DE","MDC","MC","MCO","MD","ME","AC","PL","ED","EE"
@@ -412,32 +345,83 @@ listapos=[
 listaresultados=[
     "0-0","0-1","1-0","1-1","2-0","2-1","0-2","1-2","2-2","3-0","3-1","3-2","0-3","1-3","2-3","3-3","4-0","4-1","4-2","4-3","0-4","1-4","2-4","3-4","4-4","5-0","5-1","5-2","5-3","5-4","0-5","1-5","2-5","3-5","4-5","5-5"
 ]
+grupos=["A","B","C","D","E","F","G","H"]
+tipodevisita=["visitada","visitante"]
 file = open('deetznuts.txt','a')
-for i in range (3000):
+for i in range (17*len(listaequipasxdddd)):
     randindex=random.randrange(len(listanomes))
     nome=listanomes[randindex]+' '
     randindex=random.randrange(len(listanomes))
     nome+=listanomes[randindex]
-    randpaises=random.randrange(len(listapaises))
-    pais=listapaises[randpaises]
+    randpaises=random.randrange(len(nacionalidades))
+    pais=nacionalidades[randpaises]
     jgosjogados=random.randint(0,14)
     ncamisola=random.randint(1,99)
     tmpjogado=random.randint(0,90*jgosjogados)
     ngolos=random.randint(0,math.ceil(1.5*jgosjogados))
     idade=random.randint(17,40)
     file.write(f'INSERT INTO Jogador VALUES({i},"{nome}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},{idade})\n')
-for i in range(3000):
-    eqind=random.randrange(len(listaequipasxdddd))
-    nomeequ=listaequipasxdddd[eqind]
+for nome in listaequipasxdddd:
     jogosjogados=random.randint(1,14)
     golostotais=random.randint(0,51)
-    file.write(f'INSERT INTO Equipa VALUES("{nomeequ}",{jogosjogados},{golostotais})\n')
-for i in range(3000):
-    eqind=random.randrange(len(listaequipasxdddd))
-    nomeequ=listaequipasxdddd[eqind]
-    jogosjogados=random.randint(1,14)
-    golostotais=random.randint(0,51)
-    file.write(f'INSERT INTO Equipa VALUES("{nomeequ}",{jogosjogados},{golostotais})\n')    
+    file.write(f'INSERT INTO Equipa VALUES("{nome}",{jogosjogados},{golostotais})\n')   
+for grupid in grupos:
+    file.write(f'INSERT INTO Grupo VALUES("{grupid}")\n')
+for tipo in listafase:
+    file.write(f'INSERT INTO Estado VALUES("{tipo}")\n')
+for i in range (40):
+    randindex1=random.randrange(len(listafase))
+    tipoJogo=listafase[randindex1]
+    randindex=random.randrange(len(listaresultados))
+    resultado=listaresultados[randindex]
+    nFaltas=str(random.randint(0,10))+"-"+str(random.randint(0,10))
+    temp=random.randint(30,70)
+    posseDeBola=str(temp)+"-"+str(100-temp)
+    cantos=str(random.randint(0,10))+"-"+str(random.randint(0,10))
+    remates=str(random.randint(0,10))+"-"+str(random.randint(0,10))
+    passesCompletos=str(random.randint(0,200))+"-"+str(random.randint(0,200))
+    rematesABaliza=str(random.randint(0,30))+"-"+str(random.randint(0,30)) 
+    file.write(f'INSERT INTO EstatisticasDeJogo VALUES("{tipoJogo}","{resultado}","{nFaltas}","{posseDeBola}","{cantos}","{remates}","{passesCompletos}","{rematesABaliza}")\n')
+#apartir daqui tive menos cuidado
+for i in range (40):
+    nPontos=random.randint(0,420)
+    classificacao=random.randint(0,420)
+    golosMarcados=random.randint(0,420)
+    golosSofridos=random.randint(0,420)
+    vitorias=random.randint(0,20)
+    derrotas=random.randint(0,20)
+    empates=random.randint(0,20)
+    file.write(f'INSERT INTO EstatisticasEquipa VALUES({nPontos},{classificacao},{golosMarcados},{golosSofridos},{vitorias},{derrotas},{empates})\n')
+for i in range (40):
+    randindex1=random.randrange(len(tipodevisita))
+    tipoEstadoVisita=tipodevisita[randindex1]
+    file.write(f'INSERT INTO EstadoVisita VALUES("{tipoEstadoVisita}")\n')
+for i in range (40):
+    golosMarcados=random.randint(0,420)
+    assistencias=random.randint(0,420)
+    passesRealizados=random.randint(0,420)
+    cortesRealizados=random.randint(0,420)
+    cartoesAmarelos=random.randint(0,420)
+    cartoesVermelhos=random.randint(0,420)
+    faltasCometidas=random.randint(0,420)
+    golosDefendidos=random.randint(0,420)
+    file.write(f'INSERT INTO EstatisticasJogador VALUES({golosMarcados},{assistencias},{passesRealizados},{cortesRealizados},{cartoesAmarelos},{cartoesVermelhos},{faltasCometidas},{golosDefendidos})\n')
+for i in range (40):
+    idArbitro =i
+    randindex=random.randrange(len(listanomes))
+    nomeArbitro=listanomes[randindex]+' '
+    nomeArbitro+=listanomes[randindex]
+    idade=random.randint(20,50)
+    nivel=random.randint(1,9)
+    file.write(f'INSERT INTO Arbitro VALUES({idArbitro},"{nomeArbitro}",{idade},{nivel})\n')
+for i in range (40):
+    idJogo="teste" #idk
+    randindex1=random.randrange(len(listafase))
+    eliminatoria=listafase[randindex1]
+    nGolosVisitada=random.randint(0,7)
+    nGolosVisitante=random.randint(0,7)
+    dataJogo=str(random.randint(1,28))+"/"+str(random.randint(1,12))+"/"+str(random.randint(2021,2022))
+    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}",{nGolosVisitada},{nGolosVisitante},"{dataJogo}")\n')
 file.close()
 
     
