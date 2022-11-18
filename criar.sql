@@ -23,6 +23,12 @@ CREATE TABLE Jogador(
     tempoJogado TINYINT NOT NULL,
     posicao VARCHAR(255) NOT NULL,
     idade TINYINT NOT NULL
+
+    CHECK (idJogador >= 1),
+    CHECK (nGolos >= 0),
+    CONSTRAINT check_numero CHECK (numero >=1 AND numero<=99),
+    CHECK (jogosJogados >= 0),
+    CHECK (idade >= 14 AND idade <= 40)
 );
 
 
@@ -34,16 +40,18 @@ CREATE TABLE Equipa(
 
 CREATE TABLE Grupo(
     idGrupo TINYINT NOT NULL PRIMARY KEY,
+
     CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' OR idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
 );
 
 CREATE TABLE Estado(
     tipoEstado VARCHAR(255) NOT NULL PRIMARY KEY,
+
     CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'pre-eliminatorias' OR tipoEstado == 'fase-de-grupos' OR tipoEstado == 'oitavos-de-final' OR tipoEstado == 'quartos-de-final' OR tipoEstado == 'semi-final' OR tipoEstado == 'final')
 );
 
 CREATE TABLE EstatisticasDeJogo(
-    tipoJogo VARCHAR(255) NOT NULL,
+    tipoJogo VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado),
     resultado VARCHAR(255) NOT NULL,
     nFaltas VARCHAR(255) NOT NULL,
     posseDeBola VARCHAR(255) NOT NULL,
@@ -61,10 +69,14 @@ CREATE TABLE EstatisticasEquipa(
     vitorias TINYINT NOT NULL,
     derrotas TINYINT NOT NULL,
     empates TINYINT NOT NULL
+
+    CHECK (nPontos >= 0),
+    CONSTRAINT check_classificacao CHECK (classificacao <= 4 AND classificacao >= 1)
 );
 
 CREATE TABLE EstadoVisita(
     tipoEstadoVisita VARCHAR(255) NOT NULL,
+
     CONSTRAINT check_tipoEstadoVisita CHECK (tipoEstadoVisita == 'visitada' OR tipoEstadoVisita == 'visitante')
 );
 
@@ -77,6 +89,15 @@ CREATE TABLE EstatisticasJogador(
     cartoesVermelhos TINYINT NOT NULL,
     faltasCometidas TINYINT NOT NULL,
     golosDefendidos INT NOT NULL
+
+    CHECK (golosMarcados >= 0),
+    CHECK (assistencias >= 0),
+    CHECK (passesRealizados >= 0),
+    CHECK (cortesRealizados >= 0),
+    CHECK (cartoesAmarelos >= 0),
+    CHECK (cartoesVermelhos >= 0),
+    CHECK (faltasCometidas >= 0),
+    CHECK (golosDefendidos >= 0)
 );
 
 CREATE TABLE Arbitro(
@@ -84,15 +105,20 @@ CREATE TABLE Arbitro(
     nomeArbitro VARCHAR(255) NOT NULL,
     idade TINYINT NOT NULL,
     nivel TINYINT NOT NULL,
+
+    CHECK (idArbitro >= 0),
     CONSTRAINT check_nivel CHECK(nivel>=1 AND nivel<=9)
 );
 
 CREATE TABLE Jogo(
     idJogo VARCHAR(255) NOT NULL PRIMARY KEY,
-    eliminatoria VARCHAR(255) NOT NULL,
+    eliminatoria VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado),
     nGolosVisitada TINYINT NOT NULL,
     nGolosVisitante TINYINT NOT NULL,
     dataJogo VARCHAR(255) NOT NULL
+
+    CHECK (nGolosVisitada >= 0),
+    CHECK (nGolosVisitante >= 0)
 );
 
 /*.read povoar.sql*/
@@ -106,7 +132,7 @@ insert into EstatisticasEquipa values (6, 1, 5, 0, 2, 0, 0);
 insert into EstadoVisita values ('visitante');
 insert into EstatisticasJogador values(3, 1, 57, 7, 1, 0, 3, 0);
 insert into Arbitro values(2, 'Tiago', 32, 3);
-insert into Jogo values('FC Porto - Real Madrid', 'final', 4, 3, '17/11/2022');
+insert into Jogo values('FC Porto - Real Madrid', 'fase-de-grupos', 4, 3, '17/11/2022');
 
 SELECT * FROM Jogador;
 SELECT * FROM Equipa;
