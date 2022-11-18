@@ -28,6 +28,7 @@ CREATE TABLE Jogador(
     CHECK (nGolos >= 0),
     CONSTRAINT check_numero CHECK (numero >=1 AND numero<=99),
     CHECK (jogosJogados >= 0),
+    CONSTRAINT check_posicao CHECK (posicao == 'GR' OR posicao == 'DD' OR posicao == 'DC' OR posicao == 'DE' OR posicao == 'MDC' OR posicao == 'MC' OR posicao == 'MCO' OR posicao == 'MD' OR posicao == 'ME' OR posicao == 'AC' OR posicao == 'PL' OR posicao == 'ED' OR posicao == 'EE'),
     CHECK (idade >= 14 AND idade <= 40)
 );
 
@@ -72,6 +73,11 @@ CREATE TABLE EstatisticasEquipa(
 
     CHECK (nPontos >= 0),
     CONSTRAINT check_classificacao CHECK (classificacao <= 4 AND classificacao >= 1)
+    CHECK (golosMarcados >= 0)
+    CHECK (golosSofridos >= 0)
+    CHECK (vitorias >= 0)
+    CHECK (derrotas >= 0)
+    CHECK (empates >= 0)
 );
 
 CREATE TABLE EstadoVisita(
@@ -107,7 +113,8 @@ CREATE TABLE Arbitro(
     nivel TINYINT NOT NULL,
 
     CHECK (idArbitro >= 0),
-    CONSTRAINT check_nivel CHECK(nivel>=1 AND nivel<=9)
+    CONSTRAINT check_idade CHECK (idade >= 17 AND idade <= 85),
+    CONSTRAINT check_nivel CHECK (nivel>=1 AND nivel<=9)
 );
 
 CREATE TABLE Jogo(
@@ -115,7 +122,7 @@ CREATE TABLE Jogo(
     eliminatoria VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado),
     nGolosVisitada TINYINT NOT NULL,
     nGolosVisitante TINYINT NOT NULL,
-    dataJogo VARCHAR(255) NOT NULL
+    dataJogo VARCHAR(255) NOT NULL,
 
     CHECK (nGolosVisitada >= 0),
     CHECK (nGolosVisitante >= 0)
