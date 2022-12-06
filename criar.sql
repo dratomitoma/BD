@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS Equipa;
 DROP TABLE IF EXISTS Jogador;
 
 CREATE TABLE Jogador(
-    idJogador INT NOT NULL PRIMARY KEY,
+    idJogador INT PRIMARY KEY,
     nomeJogador VARCHAR(255) NOT NULL,
     nGolos TINYINT NOT NULL,
     nacionalidade VARCHAR(255) NOT NULL,
@@ -34,25 +34,26 @@ CREATE TABLE Jogador(
 
 
 CREATE TABLE Equipa(
-    nomeEquipa VARCHAR(255)  NOT NULL PRIMARY KEY,
+    idEquipa INT PRIMARY KEY,
+    nomeEquipa VARCHAR(255),
     jogosJogados TINYINT NOT NULL,
     golosTotais TINYINT NOT NULL
 );
 
 CREATE TABLE Grupo(
-    idGrupo TINYINT NOT NULL PRIMARY KEY,
+    idGrupo TINYINT PRIMARY KEY,
 
     CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' OR idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
 );
 
 CREATE TABLE Estado(
-    tipoEstado VARCHAR(255) NOT NULL PRIMARY KEY,
+    tipoEstado VARCHAR(255) PRIMARY KEY,
 
     CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'pre-eliminatorias' OR tipoEstado == 'fase-de-grupos' OR tipoEstado == 'oitavos-de-final' OR tipoEstado == 'quartos-de-final' OR tipoEstado == 'semi-final' OR tipoEstado == 'final')
 );
 
 CREATE TABLE EstatisticasDeJogo(
-    tipoJogo VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado),
+    tipoJogo VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado), --tirar not null??
     resultado VARCHAR(255) NOT NULL,
     nFaltas VARCHAR(255) NOT NULL,
     posseDeBola VARCHAR(255) NOT NULL,
@@ -107,7 +108,7 @@ CREATE TABLE EstatisticasJogador(
 );
 
 CREATE TABLE Arbitro(
-    idArbitro INT NOT NULL PRIMARY KEY,
+    idArbitro INT PRIMARY KEY,
     nomeArbitro VARCHAR(255) NOT NULL,
     idade TINYINT NOT NULL,
     nivel TINYINT NOT NULL,
@@ -118,7 +119,7 @@ CREATE TABLE Arbitro(
 );
 
 CREATE TABLE Jogo(
-    idJogo VARCHAR(255) NOT NULL PRIMARY KEY,
+    idJogo VARCHAR(255) PRIMARY KEY,
     eliminatoria VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado),
     nGolosVisitada TINYINT NOT NULL,
     nGolosVisitante TINYINT NOT NULL,
@@ -129,14 +130,3 @@ CREATE TABLE Jogo(
 );
 
 .read povoar.sql
-
-SELECT * FROM Jogador;
-SELECT * FROM Equipa;
-SELECT * FROM Grupo;
-SELECT * FROM Estado;
-SELECT * FROM EstatisticasDeJogo;
-SELECT * FROM EstatisticasEquipa;
-SELECT * FROM EstadoVisita;
-SELECT * FROM EstatisticasJogador;
-SELECT * FROM Arbitro;
-SELECT * FROM Jogo;
