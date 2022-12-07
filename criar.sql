@@ -9,8 +9,8 @@ DROP TABLE IF EXISTS EstadoVisita;
 DROP TABLE IF EXISTS EstatisticasEquipa;
 DROP TABLE IF EXISTS EstatisticasDeJogo;
 DROP TABLE IF EXISTS Estado;
-DROP TABLE IF EXISTS Grupo;
 DROP TABLE IF EXISTS Equipa;
+DROP TABLE IF EXISTS Grupo;
 DROP TABLE IF EXISTS Jogador;
 
 CREATE TABLE Jogador(
@@ -32,19 +32,20 @@ CREATE TABLE Jogador(
     CHECK (idade >= 14 AND idade <= 40)
 );
 
+CREATE TABLE Grupo(
+    idGrupo VARCHAR(1) PRIMARY KEY,
+
+    CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' OR idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
+);
 
 CREATE TABLE Equipa(
     idEquipa INT PRIMARY KEY,
     nomeEquipa VARCHAR(255),
     jogosJogados TINYINT NOT NULL,
-    golosTotais TINYINT NOT NULL
+    golosTotais TINYINT NOT NULL,
+    idGrupo VARCHAR(1) REFERENCES Grupo(idGrupo)
 );
 
-CREATE TABLE Grupo(
-    idGrupo TINYINT PRIMARY KEY,
-
-    CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' OR idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
-);
 
 CREATE TABLE Estado(
     tipoEstado VARCHAR(255) PRIMARY KEY,
@@ -53,7 +54,7 @@ CREATE TABLE Estado(
 );
 
 CREATE TABLE EstatisticasDeJogo(
-    tipoJogo VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado), --tirar not null??
+    tipoJogo VARCHAR(255) REFERENCES Estado(tipoEstado),
     resultado VARCHAR(255) NOT NULL,
     nFaltas VARCHAR(255) NOT NULL,
     posseDeBola VARCHAR(255) NOT NULL,
@@ -130,3 +131,14 @@ CREATE TABLE Jogo(
 );
 
 .read povoar.sql
+
+SELECT * FROM Jogador;
+SELECT * FROM Grupo;
+SELECT * FROM Equipa;
+SELECT * FROM Estado;
+SELECT * FROM EstatisticasDeJogo;
+SELECT * FROM EstatisticasEquipa;
+SELECT * FROM EstadoVisita;
+SELECT * FROM EstatisticasJogador;
+SELECT * FROM Arbitro;
+SELECT * FROM Jogo;
