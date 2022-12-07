@@ -16,6 +16,7 @@ DROP TABLE IF EXISTS Jogador;
 CREATE TABLE Jogador(
     idJogador INT PRIMARY KEY,
     nomeJogador VARCHAR(255) NOT NULL,
+    equipa VARCHAR(255) REFERENCES Equipa(nomeEquipa),
     nGolos TINYINT NOT NULL,
     nacionalidade VARCHAR(255) NOT NULL,
     numero TINYINT NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE Grupo(
 
 CREATE TABLE Equipa(
     idEquipa INT PRIMARY KEY,
-    nomeEquipa VARCHAR(255),
+    nomeEquipa VARCHAR(255) NOT NULL,
     jogosJogados TINYINT NOT NULL,
     golosTotais TINYINT NOT NULL,
     idGrupo VARCHAR(1) REFERENCES Grupo(idGrupo)
