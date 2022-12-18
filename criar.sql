@@ -9,29 +9,11 @@ DROP TABLE IF EXISTS EstadoVisita;
 DROP TABLE IF EXISTS EstatisticasEquipa;
 DROP TABLE IF EXISTS EstatisticasDeJogo;
 DROP TABLE IF EXISTS Estado;
+DROP TABLE IF EXISTS Jogador;
 DROP TABLE IF EXISTS Equipa;
 DROP TABLE IF EXISTS Grupo;
-DROP TABLE IF EXISTS Jogador;
 
-CREATE TABLE Jogador(
-    idJogador INT PRIMARY KEY,
-    nomeJogador VARCHAR(255) NOT NULL,
-    equipa VARCHAR(255) REFERENCES Equipa(nomeEquipa),
-    nGolos TINYINT NOT NULL,
-    nacionalidade VARCHAR(255) NOT NULL,
-    numero TINYINT NOT NULL,
-    jogosJogados TINYINT NOT NULL,
-    tempoJogado TINYINT NOT NULL,
-    posicao VARCHAR(255) NOT NULL,
-    idade TINYINT NOT NULL
 
-    CHECK (idJogador >= 1),
-    CHECK (nGolos >= 0),
-    CONSTRAINT check_numero CHECK (numero >=1 AND numero<=99),
-    CHECK (jogosJogados >= 0),
-    CONSTRAINT check_posicao CHECK (posicao == 'GR' OR posicao == 'DD' OR posicao == 'DC' OR posicao == 'DE' OR posicao == 'MDC' OR posicao == 'MC' OR posicao == 'MCO' OR posicao == 'MD' OR posicao == 'ME' OR posicao == 'AC' OR posicao == 'PL' OR posicao == 'ED' OR posicao == 'EE'),
-    CHECK (idade >= 14 AND idade <= 40)
-);
 
 CREATE TABLE Grupo(
     idGrupo VARCHAR(1) PRIMARY KEY,
@@ -40,13 +22,36 @@ CREATE TABLE Grupo(
 );
 
 CREATE TABLE Equipa(
-    idEquipa INT PRIMARY KEY,
-    nomeEquipa VARCHAR(255) NOT NULL,
+    idEquipa INT,
+    nomeEquipa VARCHAR(255),
     jogosJogados TINYINT NOT NULL,
     golosTotais TINYINT NOT NULL,
-    idGrupo VARCHAR(1) REFERENCES Grupo(idGrupo)
+    idGrupo VARCHAR(1) REFERENCES Grupo(idGrupo),
+    PRIMARY KEY (idEquipa,nomeEquipa)
 );
 
+CREATE TABLE Jogador(
+    idJogador INT PRIMARY KEY,
+    nomeJogador VARCHAR(255) NOT NULL,
+    idEquipa INT NOT NULL,
+    nomeEquipa VARCHAR(255) NOT NULL,
+    nGolos TINYINT NOT NULL,
+    nacionalidade VARCHAR(255) NOT NULL,
+    numero TINYINT NOT NULL,
+    jogosJogados TINYINT NOT NULL,
+    tempoJogado TINYINT NOT NULL,
+    posicao VARCHAR(255) NOT NULL,
+    idade TINYINT NOT NULL,
+    FOREIGN KEY (idEquipa,nomeEquipa) REFERENCES Equipa(idEquipa,nomeEquipa) ON DELETE CASCADE,
+
+
+    CHECK (idJogador >= 1),
+    CHECK (nGolos >= 0),
+    CONSTRAINT check_numero CHECK (numero >=1 AND numero<=99),
+    CHECK (jogosJogados >= 0),
+    CONSTRAINT check_posicao CHECK (posicao == 'GR' OR posicao == 'DD' OR posicao == 'DC' OR posicao == 'DE' OR posicao == 'MDC' OR posicao == 'MC' OR posicao == 'MCO' OR posicao == 'MD' OR posicao == 'ME' OR posicao == 'AC' OR posicao == 'PL' OR posicao == 'ED' OR posicao == 'EE'),
+    CHECK (idade >= 14 AND idade <= 40)
+);
 
 CREATE TABLE Estado(
     tipoEstado VARCHAR(255) PRIMARY KEY,
@@ -122,7 +127,7 @@ CREATE TABLE Arbitro(
 
 CREATE TABLE Jogo(
     idJogo VARCHAR(255) PRIMARY KEY,
-    eliminatoria VARCHAR(255) NOT NULL REFERENCES Estado(tipoEstado),
+    eliminatoria VARCHAR(255) REFERENCES Estado(tipoEstado),
     nGolosVisitada TINYINT NOT NULL,
     nGolosVisitante TINYINT NOT NULL,
     dataJogo VARCHAR(255) NOT NULL,
@@ -133,9 +138,10 @@ CREATE TABLE Jogo(
 
 .read povoar.sql
 
-SELECT * FROM Jogador;
+
 SELECT * FROM Grupo;
 SELECT * FROM Equipa;
+SELECT * FROM Jogador;
 SELECT * FROM Estado;
 SELECT * FROM EstatisticasDeJogo;
 SELECT * FROM EstatisticasEquipa;
