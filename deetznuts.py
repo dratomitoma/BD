@@ -353,22 +353,26 @@ for i in range (17*len(listaequipasxdddd)):
     nome=listanomes[randindex]+' '
     randindex=random.randrange(len(listanomes))
     nome+=listanomes[randindex]
+    randindex=random.randrange(len(listaequipasxdddd))
+    nomequipa=listaequipasxdddd[randindex]
     randpaises=random.randrange(len(nacionalidades))
     pais=nacionalidades[randpaises]
     jgosjogados=random.randint(0,14)
     ncamisola=random.randint(1,99)
     tmpjogado=random.randint(1*jgosjogados,90*jgosjogados)
     ngolos=random.randint(0,math.ceil(1.5*jgosjogados))
+    randindex=random.randrange(len(listapos))
+    pos=listapos[randindex]
     idade=random.randint(17,40)
-    file.write(f'INSERT INTO Jogador VALUES({i+1},"{nome}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},{idade})\n')
+    file.write(f'INSERT INTO Jogador VALUES({i+1},"{nome}","{nomequipa}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},"{pos}",{idade});\n')
 for nome in listaequipasxdddd:
     jogosjogados=random.randint(1,14)
     golostotais=random.randint(0,51)
-    file.write(f'INSERT INTO Equipa VALUES("{nome}",{jogosjogados},{golostotais})\n')   
+    file.write(f'INSERT INTO Equipa VALUES("{nome}",{jogosjogados},{golostotais});\n')   
 for grupid in grupos:
-    file.write(f'INSERT INTO Grupo VALUES("{grupid}")\n')
+    file.write(f'INSERT INTO Grupo VALUES("{grupid}");\n')
 for tipo in listafase:
-    file.write(f'INSERT INTO Estado VALUES("{tipo}")\n')
+    file.write(f'INSERT INTO Estado VALUES("{tipo}");\n')
 for i in range (40):
     randindex1=random.randrange(len(listafase))
     tipoJogo=listafase[randindex1]
@@ -383,7 +387,7 @@ for i in range (40):
     remates=str(remates1)+"-"+str(remates2)
     passesCompletos=str(random.randint(0,300))+"-"+str(random.randint(0,300))
     rematesABaliza=str(random.randint(0,remates1))+"-"+str(random.randint(0,remates2)) 
-    file.write(f'INSERT INTO EstatisticasDeJogo VALUES("{tipoJogo}","{resultado}","{nFaltas}","{posseDeBola}","{cantos}","{remates}","{passesCompletos}","{rematesABaliza}")\n')
+    file.write(f'INSERT INTO EstatisticasDeJogo VALUES("{tipoJogo}","{resultado}","{nFaltas}","{posseDeBola}","{cantos}","{remates}","{passesCompletos}","{rematesABaliza}");\n')
 #apartir daqui tive menos cuidado
 for i in range (40):
     nPontos=random.randint(0,18)
@@ -393,11 +397,11 @@ for i in range (40):
     vitorias=random.randint(0,14)
     derrotas=random.randint(0,14 - vitorias)
     empates=random.randint(0,14 - vitorias - derrotas)
-    file.write(f'INSERT INTO EstatisticasEquipa VALUES({nPontos},{classificacao},{golosMarcados},{golosSofridos},{vitorias},{derrotas},{empates})\n')
+    file.write(f'INSERT INTO EstatisticasEquipa VALUES({nPontos},{classificacao},{golosMarcados},{golosSofridos},{vitorias},{derrotas},{empates});\n')
 for i in range (40):
     randindex1=random.randrange(len(tipodevisita))
     tipoEstadoVisita=tipodevisita[randindex1]
-    file.write(f'INSERT INTO EstadoVisita VALUES("{tipoEstadoVisita}")\n')
+    file.write(f'INSERT INTO EstadoVisita VALUES("{tipoEstadoVisita}");\n')
 for i in range (40):
     golosMarcados=random.randint(0,5)
     assistencias=random.randint(0,5)
@@ -407,7 +411,7 @@ for i in range (40):
     cartoesVermelhos=random.randint(0,1)
     faltasCometidas=random.randint(0,6)
     golosDefendidos=random.randint(0,20)
-    file.write(f'INSERT INTO EstatisticasJogador VALUES({golosMarcados},{assistencias},{passesRealizados},{cortesRealizados},{cartoesAmarelos},{cartoesVermelhos},{faltasCometidas},{golosDefendidos})\n')
+    file.write(f'INSERT INTO EstatisticasJogador VALUES({golosMarcados},{assistencias},{passesRealizados},{cortesRealizados},{cartoesAmarelos},{cartoesVermelhos},{faltasCometidas},{golosDefendidos});\n')
 for i in range (40):
     idArbitro = i
     randindex=random.randrange(len(listanomes))
@@ -415,7 +419,7 @@ for i in range (40):
     nomeArbitro+=listanomes[randindex]
     idade=random.randint(17,85)
     nivel=random.randint(1,9)
-    file.write(f'INSERT INTO Arbitro VALUES({idArbitro + 1},"{nomeArbitro}",{idade},{nivel})\n')
+    file.write(f'INSERT INTO Arbitro VALUES({idArbitro + 1},"{nomeArbitro}",{idade},{nivel});\n')
 for i in range (40):
     randindex3 = random.randrange(len(listaequipasxdddd))
     randindex4 = random.randrange(len(listaequipasxdddd))
@@ -425,7 +429,7 @@ for i in range (40):
     nGolosVisitada=random.randint(0,7)
     nGolosVisitante=random.randint(0,7)
     dataJogo=str(random.randint(1,28))+"/"+str(random.randint(1,12))+"/"+str(random.randint(2021,2022))
-    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}",{nGolosVisitada},{nGolosVisitante},"{dataJogo}")\n')
+    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}",{nGolosVisitada},{nGolosVisitante},"{dataJogo}");\n')
 file.close()
 
     
