@@ -1,4 +1,3 @@
-INSERT INTO Jogador VALUES(1,"Brittany Alexander",6,"Peñarol",15,"bielo-russo",94,13,564,"MDC",38);
 
 INSERT INTO Grupo VALUES("A");
 INSERT INTO Grupo VALUES("B");
@@ -40,6 +39,7 @@ INSERT INTO Equipa VALUES(29,"Olimpia",7,46,"H");
 INSERT INTO Equipa VALUES(30,"Estudiantes",9,39,"H");
 INSERT INTO Equipa VALUES(31,"The Strongest",3,3,"H");
 INSERT INTO Equipa VALUES(32,"América Mineiro",4,42,"H");
+INSERT INTO Jogador VALUES(1,"Brittany Alexander",6,"Peñarol",15,"bielo-russo",94,13,564,"MDC",38);
 INSERT INTO Estado VALUES("pre-eliminatorias");
 INSERT INTO Estado VALUES("fase-de-grupos");
 INSERT INTO Estado VALUES("oitavos-de-final");
