@@ -30,7 +30,7 @@ CREATE TABLE Estado(
 CREATE TABLE Treinador(
     idTreinador INT PRIMARY KEY,
     nomeTreinador VARCHAR(255),
-    estiloDeJogo VARCHAR(255),
+    estiloDeJogo VARCHAR(255)
 );
 
 CREATE TABLE Equipa(
@@ -122,7 +122,7 @@ CREATE TABLE EstatisticasJogador(
     cartoesAmarelos TINYINT NOT NULL,
     cartoesVermelhos TINYINT NOT NULL,
     faltasCometidas TINYINT NOT NULL,
-    golosDefendidos INT NOT NULL
+    golosDefendidos INT NOT NULL,
 
     CHECK (golosMarcados >= 0),
     CHECK (assistencias >= 0),
@@ -146,8 +146,10 @@ CREATE TABLE Arbitro(
 );
 
 CREATE TABLE Estadio(
-    idEstadio INT,
-    nomeEstadio VARCHAR(255)
+    idEstadio INT PRIMARY KEY,
+    nomeEstadio VARCHAR(255),
+    capacidade INT,
+    anoInauguração INT
 );
 
 CREATE TABLE Jogo(
