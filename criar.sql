@@ -149,7 +149,7 @@ CREATE TABLE Estadio(
     idEstadio INT PRIMARY KEY,
     nomeEstadio VARCHAR(255),
     capacidade INT,
-    anoInauguração INT
+    anoInauguracao INT
 );
 
 CREATE TABLE Jogo(
