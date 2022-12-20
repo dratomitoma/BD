@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 --Seleciona o melhor marcador de cada equipa
 select j1.idJogador, j1.nomeJogador, j1.nGolos, Equipa.nomeEquipa
 from Jogador j1

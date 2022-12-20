@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 --Seleciona todas as equipas que ganharam um jogo por uma diferença de 2 golos e o número de vezes que tal aconteceu
 select Equipa.idEquipa, Equipa.nomeEquipa, count(*) as QUANTIDADE
 from Equipa
