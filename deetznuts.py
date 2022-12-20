@@ -429,6 +429,7 @@ for i in range (17*len(listaequipasxdddd)):
 
 #apartir daqui tive menos cuidado
 for i in range (0,17*len(listaequipasxdddd)):
+    tempoJogado=random.randint(0,90)
     golosMarcados=random.randint(0,5)
     assistencias=random.randint(0,5)
     passesRealizados=random.randint(0,150)
@@ -439,7 +440,7 @@ for i in range (0,17*len(listaequipasxdddd)):
     golosDefendidos=random.randint(0,20)
     idJogador=i+1
     idJogo=(i%40)+1
-    file.write(f'INSERT INTO EstatisticasJogador VALUES({golosMarcados},{assistencias},{passesRealizados},{cortesRealizados},{cartoesAmarelos},{cartoesVermelhos},{faltasCometidas},{golosDefendidos},{idJogador},{idJogo});\n')
+    file.write(f'INSERT INTO EstatisticasJogador VALUES({tempoJogado},{golosMarcados},{assistencias},{passesRealizados},{cortesRealizados},{cartoesAmarelos},{cartoesVermelhos},{faltasCometidas},{golosDefendidos},{idJogador},{idJogo});\n')
 for i in range (1,39):
     idArbitro = i
     randindex=random.randrange(len(listanomes))
