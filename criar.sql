@@ -154,6 +154,7 @@ CREATE TABLE Jogo(
 );
 
 CREATE TABLE EstatisticasJogador(
+    tempoJogado INT NOT NULL,
     golosMarcados TINYINT NOT NULL,
     assistencias TINYINT NOT NULL,
     passesRealizados INT NOT NULL,
