@@ -2,5 +2,5 @@
 select Treinador.nomeTreinador, equipa.vitorias
 from Treinador
 join Equipa
-on treinador.idEquipa = Equipa.idEquipa
+on Equipa.idTreinador = Treinador.idTreinador
 order by 2 desc

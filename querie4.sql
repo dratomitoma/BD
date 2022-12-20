@@ -8,4 +8,4 @@ where j1.nGolos =
 from Jogador j2
 where j2.idEquipa = j1.idEquipa
 group by idEquipa)
-order by 1
+order by 3 DESC
