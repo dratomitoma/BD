@@ -3,7 +3,7 @@
 .nullvalue NULL
 
 --Seleciona todos os jogadores que marcaram todos os golos da sua equipa num dado jogo e o número de vezes que tal aconteceu
-select Jogador.nome, EstatisticasJogador.golosMarcados, count(*) as Ocorrencias
+select Jogador.nomeJogador, EstatisticasJogador.golosMarcados, count(*) as Ocorrencias
 from Jogador
 join EstatisticasJogador
 on jogador.idJogador = EstatisticasJogador.idJogador

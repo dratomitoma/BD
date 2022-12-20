@@ -7,5 +7,5 @@ select Equipa.nomeEquipa, Jogador.nomeJogador, Jogador.idade, Jogador.posicao
 from Jogador
 join Equipa
 on Equipa.idEquipa = Jogador.idEquipa
-order by Jogador.idade
-limit 
+order by Jogador.idade DESC
+limit 1

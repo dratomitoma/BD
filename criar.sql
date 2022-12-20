@@ -47,9 +47,9 @@ CREATE TABLE Equipa(
     idGrupo VARCHAR(1),
     tipoEstado VARCHAR(255),
     idTreinador INT,
-    FOREIGN KEY (idGrupo) REFERENCES Grupo(idGrupo) ON UPDATE CASCADE,
-    FOREIGN KEY (tipoEstado) REFERENCES Estados(tipoEstado) ON UPDATE CASCADE,
-    FOREIGN KEY (idTreinador) REFERENCES Treinador(idTreinador) ON UPDATE CASCADE,
+    FOREIGN KEY (idGrupo) REFERENCES Grupo(idGrupo) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (tipoEstado) REFERENCES Estados(tipoEstado) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (idTreinador) REFERENCES Treinador(idTreinador) ON UPDATE CASCADE ON DELETE CASCADE,
 
     CHECK (idEquipa >= 1),
     CHECK (jogosJogados >= 0),
@@ -75,7 +75,7 @@ CREATE TABLE Jogador(
     idade TINYINT NOT NULL,
 
     idEquipa INT,
-    FOREIGN KEY (idEquipa) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE,
+    FOREIGN KEY (idEquipa) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE ON DELETE CASCADE,
 
 
     CHECK (idJogador >= 1),
@@ -130,11 +130,11 @@ CREATE TABLE Jogo(
     golosVisitante INT NOT NULL,
 
 
-    FOREIGN KEY (eliminatoria) REFERENCES Estados(tipoEstado) ON UPDATE CASCADE,
-    FOREIGN KEY (idEquipaVisitada) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE,
-    FOREIGN KEY (idEquipaVisitante) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE,
-    FOREIGN KEY (idArbitro) REFERENCES Arbitro(idArbitro) ON UPDATE CASCADE,
-    FOREIGN KEY (idEstadio) REFERENCES Estadio(idEstadio) ON UPDATE CASCADE,
+    FOREIGN KEY (eliminatoria) REFERENCES Estados(tipoEstado) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (idEquipaVisitada) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (idEquipaVisitante) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (idArbitro) REFERENCES Arbitro(idArbitro) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (idEstadio) REFERENCES Estadio(idEstadio) ON UPDATE CASCADE ON DELETE CASCADE,
 
 
     CHECK (nFaltasVisitada >= 0),
@@ -165,8 +165,8 @@ CREATE TABLE EstatisticasJogador(
 
     idJogador INT,
     idJogo INT,
-    FOREIGN KEY (idJogador) REFERENCES Jogador(idJogador) ON UPDATE CASCADE,
-    FOREIGN KEY (idJogo) REFERENCES Jogo(idJogo) ON UPDATE CASCADE,
+    FOREIGN KEY (idJogador) REFERENCES Jogador(idJogador) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY (idJogo) REFERENCES Jogo(idJogo) ON UPDATE CASCADE ON DELETE CASCADE,
 
     CHECK (golosMarcados >= 0),
     CHECK (assistencias >= 0),
@@ -177,6 +177,7 @@ CREATE TABLE EstatisticasJogador(
     CHECK (faltasCometidas >= 0),
     CHECK (golosDefendidos >= 0)
 );
+
 .read povoar.sql
 
 
