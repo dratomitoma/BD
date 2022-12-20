@@ -1,1 +1,1 @@
-Drop Trigger if exists trigger3 
+Drop Trigger if exists updateGroupPoints
