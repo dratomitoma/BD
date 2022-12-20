@@ -58,7 +58,7 @@ INSERT INTO Equipa VALUES(11,'Independiente del Valle',14,10,2,0,20,14,0,0,'C','
 INSERT INTO Equipa VALUES(12,'Universidad Católica',12,15,3,17,1,10,2,2,'B','Quartos-de-final',12);
 INSERT INTO Equipa VALUES(13,'Emelec',2,5,4,12,2,13,0,1,'C','Pre-eliminatorias',13);
 INSERT INTO Equipa VALUES(14,'Corinthians',13,17,1,4,0,5,2,2,'G','Pre-eliminatorias',14);
-INSERT INTO Equipa VALUES(15,'Colo-Colo',5,3,3,11,10,9,2,1,'B','Oitavos-de-final',15);
+INSERT INTO Equipa VALUES(15,'Colo-Colo',5,3,2,11,10,9,2,1,'B','Oitavos-de-final',15);
 INSERT INTO Equipa VALUES(16,'Vélez Sarsfield',5,3,3,0,10,0,13,1,'G','Pre-eliminatorias',16);
 INSERT INTO Equipa VALUES(17,'Sporting Cristal',11,6,1,24,14,11,0,1,'F','Fase-de-grupos',17);
 INSERT INTO Equipa VALUES(18,'Deportivo Cali',2,13,3,8,9,10,3,0,'E','Semi-final',18);

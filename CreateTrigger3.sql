@@ -5,23 +5,23 @@ For each row
 Begin
     case 
     when Jogo.eliminatoria = 'Fase-de-grupos'
-    then DECLARE pontosCasa, pontosFora INT;
+    then DECLARE pontosCasa, pontosFora INT
         case
-        when new.golosVisitada > new.golosVisitante
-        then set pontosCasa = 3;
-        when new.golosVisitada = new.golosVisitante
-        then set pontosCasa = 1;
-        when new.golosVisitada < new.golosVisitante
-        then set pontosCasa = 0;
+            when new.golosVisitada > new.golosVisitante
+            then set pontosCasa = 3
+            when new.golosVisitada = new.golosVisitante
+            then set pontosCasa = 1
+            when new.golosVisitada < new.golosVisitante
+            then set pontosCasa = 0
         end
 
         case
-        when new.golosVisitada > new.golosVisitante
-        then set pontosFora = 0;
-        when new.golosVisitada = new.golosVisitante
-        then set pontosFora = 1;
-        when new.golosVisitada < new.golosVisitante
-        then set pontosFora = 3;
+            when new.golosVisitada > new.golosVisitante
+            then set pontosFora = 0
+            when new.golosVisitada = new.golosVisitante
+            then set pontosFora = 1
+            when new.golosVisitada < new.golosVisitante
+            then set pontosFora = 3
         end
 
         update Equipa

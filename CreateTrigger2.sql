@@ -1,4 +1,4 @@
---Levantar erro se tentar adicionar uma equipa com um treinador já em outra equipa
+--Levantar erro se tentar adicionar uma equipa com um treinador jï¿½ em outra equipa
 CREATE TRIGGER trigger2
 Before insert on Equipa   
 For each row

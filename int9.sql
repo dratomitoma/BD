@@ -23,3 +23,4 @@ case
     then EstatisticasJogador.GolosMarcados = Jogo.golosVisitante
 end
 group by Jogador.idJogador
+order by 3 DESC
