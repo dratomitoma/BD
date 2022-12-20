@@ -3,6 +3,6 @@ CREATE TRIGGER trigger1
 AFTER insert on EstatisticasJogador 
 For each row
 Begin
-update Jogador set nGolos=nGolos+new.golosMarcados
+update Jogador set nGolos=nGolos+new.golosMarcados,tempoJogado=tempoJogado+new.tempoJogado
 where Jogador.idJogador=new.idJogador;
 End;
