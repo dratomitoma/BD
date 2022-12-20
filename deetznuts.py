@@ -428,7 +428,7 @@ for i in range (17*len(listaequipasxdddd)):
     file.write(f'INSERT INTO Jogador VALUES({i+1},"{nome}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},"{pos}",{idade},{idEquipa});\n')
 
 #apartir daqui tive menos cuidado
-for i in range (40):
+for i in range (0,17*len(listaequipasxdddd)):
     golosMarcados=random.randint(0,5)
     assistencias=random.randint(0,5)
     passesRealizados=random.randint(0,150)
@@ -437,8 +437,10 @@ for i in range (40):
     cartoesVermelhos=random.randint(0,1)
     faltasCometidas=random.randint(0,6)
     golosDefendidos=random.randint(0,20)
-    file.write(f'INSERT INTO EstatisticasJogador VALUES({golosMarcados},{assistencias},{passesRealizados},{cortesRealizados},{cartoesAmarelos},{cartoesVermelhos},{faltasCometidas},{golosDefendidos});\n')
-for i in range (40):
+    idJogador=i+1
+    idJogo=(i%40)+1
+    file.write(f'INSERT INTO EstatisticasJogador VALUES({golosMarcados},{assistencias},{passesRealizados},{cortesRealizados},{cartoesAmarelos},{cartoesVermelhos},{faltasCometidas},{golosDefendidos},{idJogador},{idJogo});\n')
+for i in range (1,39):
     idArbitro = i
     randindex=random.randrange(len(listanomes))
     nomeArbitro=listanomes[randindex]+' '
@@ -473,8 +475,8 @@ for i in range (40):
     rematesVisitante=random.randint(0,15)
     passesCompletosVisitada=random.randint(0,800)
     passesCompletosVisitante=random.randint(0,800)
-    rematesABalizaVisitada=random.randint(0,7)
-    rematesABalizaVisitante=random.randint(0,7)
+    rematesABalizaVisitada=random.randint(0,rematesVisitada)
+    rematesABalizaVisitante=random.randint(0,rematesVisitante)
     golosVisitada=random.randint(0,10)
     golosVisitante=random.randint(0,10)
     file.write(f'INSERT INTO Jogo VALUES({idJogo},"{eliminatoria}","{dataJogo}",{idEquipaVisitada},{idEquipaVisitante},{idArbitro},{idEstadio},{nFaltasVisitada},{nFaltasVisitante},{posseDeBolaVisitada},{posseDeBolaVisitante},{cantosVisitada},{cantosVisitante},{rematesVisitada},{rematesVisitante},{passesCompletosVisitada},{passesCompletosVisitante},{rematesABalizaVisitada},{rematesABalizaVisitante},{golosVisitada},{golosVisitante});\n')
