@@ -47,9 +47,9 @@ CREATE TABLE Equipa(
     idGrupo VARCHAR(1),
     tipoEstado VARCHAR(255),
     idTreinador INT,
-    FOREIGN KEY (idGrupo) REFERENCES Grupo(idGrupo) ,
-    FOREIGN KEY (tipoEstado) REFERENCES Estados(tipoEstado) ,
-    FOREIGN KEY (idTreinador) REFERENCES Treinador(idTreinador) ,
+    FOREIGN KEY (idGrupo) REFERENCES Grupo(idGrupo) ON UPDATE CASCADE,
+    FOREIGN KEY (tipoEstado) REFERENCES Estados(tipoEstado) ON UPDATE CASCADE,
+    FOREIGN KEY (idTreinador) REFERENCES Treinador(idTreinador) ON UPDATE CASCADE,
 
     CHECK (idEquipa >= 1),
     CHECK (jogosJogados >= 0),
@@ -75,7 +75,7 @@ CREATE TABLE Jogador(
     idade TINYINT NOT NULL,
 
     idEquipa INT,
-    FOREIGN KEY (idEquipa) REFERENCES Equipa(idEquipa) ,
+    FOREIGN KEY (idEquipa) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE,
 
 
     CHECK (idJogador >= 1),
@@ -149,11 +149,11 @@ CREATE TABLE Jogo(
     golosVisitante INT NOT NULL,
 
 
-    FOREIGN KEY (eliminatoria) REFERENCES Estados(tipoEstado),
-    FOREIGN KEY (idEquipaVisitada) REFERENCES Equipa(idEquipa),
-    FOREIGN KEY (idEquipaVisitante) REFERENCES Equipa(idEquipa),
-    FOREIGN KEY (idArbitro) REFERENCES Arbitro(idArbitro),
-    FOREIGN KEY (idEstadio) REFERENCES Estadio(idEstadio),
+    FOREIGN KEY (eliminatoria) REFERENCES Estados(tipoEstado) ON UPDATE CASCADE,
+    FOREIGN KEY (idEquipaVisitada) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE,
+    FOREIGN KEY (idEquipaVisitante) REFERENCES Equipa(idEquipa) ON UPDATE CASCADE,
+    FOREIGN KEY (idArbitro) REFERENCES Arbitro(idArbitro) ON UPDATE CASCADE,
+    FOREIGN KEY (idEstadio) REFERENCES Estadio(idEstadio) ON UPDATE CASCADE,
 
 
     CHECK (nFaltasVisitada >= 0),
