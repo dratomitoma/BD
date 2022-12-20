@@ -2,9 +2,9 @@
 .headers on
 .nullvalue NULL
 
---Seleciona todos os jogadores que marcaram pelo menos 1 golo numa fase eliminatória num jogo arbitrado por um árbitro de nivel superior a 5
-
-select Jogador.nomeJogador, sum(EstatisticasJogador.golosMarcados), Equipa.tipoEstado
+--Seleciona todos os jogadores que marcaram pelo menos 5 golos em fases eliminatórias num jogo arbitrado por um árbitro de nivel igual ou superior a 5
+select nomeJogador, totalGolos, nomeEquipa
+from (select Jogador.nomeJogador, sum(EstatisticasJogador.golosMarcados) as totalGolos, Equipa.nomeEquipa
 from Jogador
 join EstatisticasJogador
 on Jogador.idJogador = EstatisticasJogador.idJogador
@@ -18,3 +18,11 @@ case
     when Jogador.idEquipa = Jogo.idEquipaVisitante
     then Jogador.idEquipa = Jogo.idEquipaVisitante
 end
+join Arbitro
+on Jogo.idArbitro = Arbitro.idArbitro
+where ((Arbitro.nivel >= 5)
+AND (Equipa.tipoEstado in ('Oitavos-de-final', 'Quartos-de-final', 'Semi-final', 'Final'))
+AND (EstatisticasJogador.golosMarcados >= 1))
+group by jogador.idJogador)
+where totalGolos >= 5
+order by totalGolos desc
