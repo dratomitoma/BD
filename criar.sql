@@ -6,10 +6,9 @@ DROP TABLE IF EXISTS Jogo;
 DROP TABLE IF EXISTS Estadio;
 DROP TABLE IF EXISTS Arbitro;
 DROP TABLE IF EXISTS EstatisticasJogador;
-DROP TABLE IF EXISTS EstadoVisita;
-DROP TABLE IF EXISTS EstatisticasDeJogo;
 DROP TABLE IF EXISTS Jogador;
 DROP TABLE IF EXISTS Equipa;
+DROP TABLE IF EXISTS Treinador;
 DROP TABLE IF EXISTS Estado;
 DROP TABLE IF EXISTS Grupo;
 
@@ -89,31 +88,6 @@ CREATE TABLE Jogador(
     CHECK (idade >= 14 AND idade <= 40)
 );
 
-
-CREATE TABLE EstatisticasDeJogo(
-    nFaltasVisitada INT NOT NULL,
-    nFaltasVisitante INT NOT NULL,
-    posseDeBolaVisitada INT NOT NULL,
-    posseDeBolaVisitante INT NOT NULL,
-    cantosVisitada INT NOT NULL,
-    cantosVisitante INT NOT NULL,
-    rematesVisitada INT NOT NULL,
-    rematesVisitante INT NOT NULL,
-    passesCompletosVisitada INT NOT NULL,
-    passesCompletosVisitante INT NOT NULL,
-    rematesABalizaVisitada INT NOT NULL,
-    rematesABalizaVisitante INT NOT NULL,
-    golosVisitada INT NOT NULL,
-    golosVisitante INT NOT NULL
-);
-
-
-CREATE TABLE EstadoVisita(
-    tipoEstadoVisita VARCHAR(255) NOT NULL,
-
-    CONSTRAINT check_tipoEstadoVisita CHECK (tipoEstadoVisita == 'visitada' OR tipoEstadoVisita == 'visitante')
-);
-
 CREATE TABLE EstatisticasJogador(
     golosMarcados TINYINT NOT NULL,
     assistencias TINYINT NOT NULL,
@@ -153,18 +127,50 @@ CREATE TABLE Estadio(
 );
 
 CREATE TABLE Jogo(
-    idJogo VARCHAR(255) PRIMARY KEY,
+    idJogo INT PRIMARY KEY,
     eliminatoria VARCHAR(255),
     dataJogo VARCHAR(255) NOT NULL,
+    idEquipaVisitada INT,
+    idEquipaVisitante INT,
     idArbitro INT,
     idEstadio INT,
+    nFaltasVisitada INT NOT NULL,
+    nFaltasVisitante INT NOT NULL,
+    posseDeBolaVisitada INT NOT NULL,
+    posseDeBolaVisitante INT NOT NULL,
+    cantosVisitada INT NOT NULL,
+    cantosVisitante INT NOT NULL,
+    rematesVisitada INT NOT NULL,
+    rematesVisitante INT NOT NULL,
+    passesCompletosVisitada INT NOT NULL,
+    passesCompletosVisitante INT NOT NULL,
+    rematesABalizaVisitada INT NOT NULL,
+    rematesABalizaVisitante INT NOT NULL,
+    golosVisitada INT NOT NULL,
+    golosVisitante INT NOT NULL,
+
 
     FOREIGN KEY (eliminatoria) REFERENCES Estado(tipoEstado) ON DELETE CASCADE,
     FOREIGN KEY (idArbitro) REFERENCES Arbitro(idArbitro) ON DELETE CASCADE,
     FOREIGN KEY (idEstadio) REFERENCES Estadio(idEstadio) ON DELETE CASCADE,
+    FOREIGN KEY (idEquipaVisitada) REFERENCES Equipa(idEquipa) ON DELETE CASCADE,
+    FOREIGN KEY (idEquipaVisitante) REFERENCES Equipa(idEquipa) ON DELETE CASCADE,
 
-    CHECK (nGolosVisitada >= 0),
-    CHECK (nGolosVisitante >= 0)
+
+    CHECK (nFaltasVisitada >= 0),
+    CHECK (nFaltasVisitante >= 0),
+    CHECK (posseDeBolaVisitada >= 0),
+    CHECK (posseDeBolaVisitante >= 0),
+    CHECK (cantosVisitada >= 0),
+    CHECK (cantosVisitante >= 0),
+    CHECK (rematesVisitada >= 0),
+    CHECK (rematesVisitante >= 0),
+    CHECK (passesCompletosVisitada >= 0),
+    CHECK (passesCompletosVisitante >= 0),
+    CHECK (rematesABalizaVisitada >= 0),
+    CHECK (rematesABalizaVisitante >= 0),
+    CHECK (golosVisitada >= 0),
+    CHECK (golosVisitante >= 0)
 );
 
 .read povoar.sql
@@ -172,10 +178,10 @@ CREATE TABLE Jogo(
 
 SELECT * FROM Grupo;
 SELECT * FROM Estado;
+SELECT * FROM Treinador;
 SELECT * FROM Equipa;
 SELECT * FROM Jogador;
-SELECT * FROM EstatisticasDeJogo;
-SELECT * FROM EstadoVisita;
 SELECT * FROM EstatisticasJogador;
 SELECT * FROM Arbitro;
+SELECT * FROM Estadio;
 SELECT * FROM Jogo;
