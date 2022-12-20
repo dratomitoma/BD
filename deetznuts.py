@@ -415,8 +415,6 @@ for i in range (17*len(listaequipasxdddd)):
     nome=listanomes[randindex]+' '
     randindex=random.randrange(len(listanomes))
     nome+=listanomes[randindex]
-    randindex=random.randrange(len(listaequipasxdddd))
-    nomequipa=listaequipasxdddd[randindex]
     randpaises=random.randrange(len(nacionalidades))
     pais=nacionalidades[randpaises]
     jgosjogados=random.randint(0,14)
@@ -427,24 +425,8 @@ for i in range (17*len(listaequipasxdddd)):
     pos=listapos[randindex]
     idade=random.randint(17,40)
     idEquipa=random.randint(1,32)
-    file.write(f'INSERT INTO Jogador VALUES({i+1},"{nome}","{nomequipa}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},"{pos}",{idade},{idEquipa});\n')
+    file.write(f'INSERT INTO Jogador VALUES({i+1},"{nome}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},"{pos}",{idade},{idEquipa});\n')
 
-for i in range (40):
-    nFaltasVisitada=random.randint(0,15)
-    nFaltasVisitante=random.randint(0,15)
-    posseDeBolaVisitada=random.randint(20,100)
-    posseDeBolaVisitante=100-posseDeBolaVisitada
-    cantosVisitada=random.randint(0,10)
-    cantosVisitante=random.randint(0,10)
-    rematesVisitada=random.randint(0,15)
-    rematesVisitante=random.randint(0,15)
-    passesCompletosVisitada=random.randint(0,800)
-    passesCompletosVisitante=random.randint(0,800)
-    rematesABalizaVisitada=random.randint(0,7)
-    rematesABalizaVisitante=random.randint(0,7)
-    golosVisitada=random.randint(0,10)
-    golosVisitante=random.randint(0,10)
-    file.write(f'INSERT INTO EstatisticasDeJogo VALUES({nFaltasVisitada},{nFaltasVisitante},{posseDeBolaVisitada},{posseDeBolaVisitante},{cantosVisitada},{cantosVisitante},{rematesVisitada},{rematesVisitante},{passesCompletosVisitada},{passesCompletosVisitante},{rematesABalizaVisitada},{rematesABalizaVisitante},{golosVisitada},{golosVisitante});\n')
 #apartir daqui tive menos cuidado
 for i in range (40):
     golosMarcados=random.randint(0,5)
@@ -471,12 +453,16 @@ for i in range (len(estadios)):
     file.write(f'INSERT INTO Estadios VALUES({i + 1},"{estadios[i]}",{capacidade},{ano});\n')
     
 for i in range (40):
-    randindex3 = random.randrange(len(listaequipasxdddd))
-    randindex4 = random.randrange(len(listaequipasxdddd))
-    idJogo = str(listaequipasxdddd[randindex3]) + '-' + str(listaequipasxdddd[randindex4])
+    idJogo = i+1
     randindex1=random.randrange(len(listafase))
     eliminatoria=listafase[randindex1]
     dataJogo=str(random.randint(1,28))+"/"+str(random.randint(1,12))+"/"+str(random.randint(2021,2022))
+    idEquipaVisitada=random.randint(1,32)
+    idEquipaVisitante=random.randint(1,32)
+    while(idEquipaVisitante==idEquipaVisitada):
+        idEquipaVisitante=random.randint(1,32)
+    idArbitro=random.randint(1,41)
+    idEstadio=random.randint(1,9)
     nFaltasVisitada=random.randint(0,15)
     nFaltasVisitante=random.randint(0,15)
     posseDeBolaVisitada=random.randint(20,100)
@@ -491,7 +477,7 @@ for i in range (40):
     rematesABalizaVisitante=random.randint(0,7)
     golosVisitada=random.randint(0,10)
     golosVisitante=random.randint(0,10)
-    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}","{dataJogo}",{nFaltasVisitada},{nFaltasVisitante},{posseDeBolaVisitada},{posseDeBolaVisitante},{cantosVisitada},{cantosVisitante},{rematesVisitada},{rematesVisitante},{passesCompletosVisitada},{passesCompletosVisitante},{rematesABalizaVisitada},{rematesABalizaVisitante},{golosVisitada},{golosVisitante});\n')
+    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}","{dataJogo}",{idEquipaVisitada},{idEquipaVisitante},{idArbitro},{idEstadio},{nFaltasVisitada},{nFaltasVisitante},{posseDeBolaVisitada},{posseDeBolaVisitante},{cantosVisitada},{cantosVisitante},{rematesVisitada},{rematesVisitante},{passesCompletosVisitada},{passesCompletosVisitante},{rematesABalizaVisitada},{rematesABalizaVisitante},{golosVisitada},{golosVisitante});\n')
 file.close()
 
     
