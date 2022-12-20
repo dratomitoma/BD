@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
---Seleciona todos os jogadores que marcaram pelo menos 5 golos em fases eliminatórias em jogos arbitrados por um árbitro de nivel igual ou superior a 5
+--Seleciona todos os jogadores que marcaram pelo menos 5 golos em fases eliminatórias em jogos arbitrados por um árbitro de nível igual ou superior a 5
 select nomeJogador, totalGolos, nomeEquipa
 from (select Jogador.nomeJogador, sum(EstatisticasJogador.golosMarcados) as totalGolos, Equipa.nomeEquipa
 from Jogador
@@ -21,7 +21,7 @@ end
 join Arbitro
 on Jogo.idArbitro = Arbitro.idArbitro
 where ((Arbitro.nivel >= 5)
-AND (Equipa.tipoEstado in ('Oitavos-de-final', 'Quartos-de-final', 'Semi-final', 'Final'))
+AND (Jogo.eliminatoria in ('Oitavos-de-final', 'Quartos-de-final', 'Semi-final', 'Final'))
 AND (EstatisticasJogador.golosMarcados >= 1))
 group by jogador.idJogador)
 where totalGolos >= 5

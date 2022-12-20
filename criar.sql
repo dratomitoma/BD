@@ -28,7 +28,7 @@ CREATE TABLE Estados(
 
 CREATE TABLE Treinador(
     idTreinador INT PRIMARY KEY,
-    nomeTreinador VARCHAR(255),
+    nomeTreinador VARCHAR(255) NOT NULL,
     estiloDeJogo VARCHAR(255)
 );
 
@@ -101,9 +101,9 @@ CREATE TABLE Arbitro(
 
 CREATE TABLE Estadio(
     idEstadio INT PRIMARY KEY,
-    nomeEstadio VARCHAR(255),
-    capacidade INT,
-    anoInauguracao INT
+    nomeEstadio VARCHAR(255) not NULL,
+    capacidade INT NOT NULL,
+    anoInauguracao INT NOT NULL
 );
 
 CREATE TABLE Jogo(
@@ -169,6 +169,7 @@ CREATE TABLE EstatisticasJogador(
     FOREIGN KEY (idJogador) REFERENCES Jogador(idJogador) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (idJogo) REFERENCES Jogo(idJogo) ON UPDATE CASCADE ON DELETE CASCADE,
 
+    CHECK (tempoJogado >= 0),
     CHECK (golosMarcados >= 0),
     CHECK (assistencias >= 0),
     CHECK (passesRealizados >= 0),

@@ -2,7 +2,7 @@
 .headers on
 .nullvalue NULL
 
---Seleciona todos os árbritos que oficializaram jogos em estádios com capacidade maior do que 50000 e que resultaram num empate
+--Seleciona todos os árbitros que oficializaram jogos em estádios com capacidade maior do que 50000 e que resultaram num empate
 select Arbitro.idArbitro, Arbitro.nomeArbitro, Estadio.nomeEstadio, Estadio.capacidade, eq1.nomeEquipa as Casa, eq2.nomeEquipa as Fora, Jogo.golosVisitada as GolosCasa, Jogo.golosVisitante as GolosFora
 from Arbitro
 join Jogo
