@@ -392,7 +392,7 @@ for i in range (len(treinadores)):
     randindex=random.randrange(len(estilodejogo))
     tatica=estilodejogo[randindex]
     if(tatica=="NULL"):
-        file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]},NULL");\n')
+        file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]}",NULL);\n')
     else:
         file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]}","{tatica}");\n')   
 for i in range (len(listaequipasxdddd)):
@@ -450,7 +450,7 @@ for i in range (40):
 for i in range (len(estadios)):
     capacidade=random.randint(18000,64161)
     ano=random.randint(1900,1961)
-    file.write(f'INSERT INTO Estadios VALUES({i + 1},"{estadios[i]}",{capacidade},{ano});\n')
+    file.write(f'INSERT INTO Estadio VALUES({i + 1},"{estadios[i]}",{capacidade},{ano});\n')
     
 for i in range (40):
     idJogo = i+1
