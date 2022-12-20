@@ -2,10 +2,10 @@
 .headers ON
 PRAGMA foreign_keys=ON;
 
+DROP TABLE IF EXISTS EstatisticasJogador;
 DROP TABLE IF EXISTS Jogo;
 DROP TABLE IF EXISTS Estadio;
 DROP TABLE IF EXISTS Arbitro;
-DROP TABLE IF EXISTS EstatisticasJogador;
 DROP TABLE IF EXISTS Jogador;
 DROP TABLE IF EXISTS Equipa;
 DROP TABLE IF EXISTS Treinador;
@@ -87,30 +87,6 @@ CREATE TABLE Jogador(
     CHECK (idade >= 14 AND idade <= 40)
 );
 
-CREATE TABLE EstatisticasJogador(
-    golosMarcados TINYINT NOT NULL,
-    assistencias TINYINT NOT NULL,
-    passesRealizados INT NOT NULL,
-    cortesRealizados INT NOT NULL,
-    cartoesAmarelos TINYINT NOT NULL,
-    cartoesVermelhos TINYINT NOT NULL,
-    faltasCometidas TINYINT NOT NULL,
-    golosDefendidos INT NOT NULL,
-
-    idJogador INT,
-    idJogo INT,
-    FOREIGN KEY (idJogador) REFERENCES Jogador(idJogador) ON UPDATE CASCADE,
-    FOREIGN KEY (idJogo) REFERENCES Jogo(idJogo) ON UPDATE CASCADE,
-
-    CHECK (golosMarcados >= 0),
-    CHECK (assistencias >= 0),
-    CHECK (passesRealizados >= 0),
-    CHECK (cortesRealizados >= 0),
-    CHECK (cartoesAmarelos >= 0),
-    CHECK (cartoesVermelhos >= 0),
-    CHECK (faltasCometidas >= 0),
-    CHECK (golosDefendidos >= 0)
-);
 
 CREATE TABLE Arbitro(
     idArbitro INT PRIMARY KEY,
@@ -177,6 +153,30 @@ CREATE TABLE Jogo(
     CHECK (golosVisitante >= 0)
 );
 
+CREATE TABLE EstatisticasJogador(
+    golosMarcados TINYINT NOT NULL,
+    assistencias TINYINT NOT NULL,
+    passesRealizados INT NOT NULL,
+    cortesRealizados INT NOT NULL,
+    cartoesAmarelos TINYINT NOT NULL,
+    cartoesVermelhos TINYINT NOT NULL,
+    faltasCometidas TINYINT NOT NULL,
+    golosDefendidos INT NOT NULL,
+
+    idJogador INT,
+    idJogo INT,
+    FOREIGN KEY (idJogador) REFERENCES Jogador(idJogador) ON UPDATE CASCADE,
+    FOREIGN KEY (idJogo) REFERENCES Jogo(idJogo) ON UPDATE CASCADE,
+
+    CHECK (golosMarcados >= 0),
+    CHECK (assistencias >= 0),
+    CHECK (passesRealizados >= 0),
+    CHECK (cortesRealizados >= 0),
+    CHECK (cartoesAmarelos >= 0),
+    CHECK (cartoesVermelhos >= 0),
+    CHECK (faltasCometidas >= 0),
+    CHECK (golosDefendidos >= 0)
+);
 .read povoar.sql
 
 
@@ -185,7 +185,7 @@ SELECT * FROM Estados;
 SELECT * FROM Treinador;
 SELECT * FROM Equipa;
 SELECT * FROM Jogador;
-SELECT * FROM EstatisticasJogador;
 SELECT * FROM Arbitro;
 SELECT * FROM Estadio;
 SELECT * FROM Jogo;
+SELECT * FROM EstatisticasJogador;

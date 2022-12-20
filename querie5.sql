@@ -1,5 +1,5 @@
 --Seleciona as 3 equipas com maior número de portugueses
-select Equipa.idEquipa, Equipa.nomeEquipa, count(*)
+select Equipa.idEquipa, Equipa.nomeEquipa, count(*) as quantidade
 from Equipa
 join Jogador
 on Jogador.idEquipa=Equipa.idEquipa
