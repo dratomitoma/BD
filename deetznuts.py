@@ -477,7 +477,7 @@ for i in range (40):
     rematesABalizaVisitante=random.randint(0,7)
     golosVisitada=random.randint(0,10)
     golosVisitante=random.randint(0,10)
-    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}","{dataJogo}",{idEquipaVisitada},{idEquipaVisitante},{idArbitro},{idEstadio},{nFaltasVisitada},{nFaltasVisitante},{posseDeBolaVisitada},{posseDeBolaVisitante},{cantosVisitada},{cantosVisitante},{rematesVisitada},{rematesVisitante},{passesCompletosVisitada},{passesCompletosVisitante},{rematesABalizaVisitada},{rematesABalizaVisitante},{golosVisitada},{golosVisitante});\n')
+    file.write(f'INSERT INTO Jogo VALUES({idJogo},"{eliminatoria}","{dataJogo}",{idEquipaVisitada},{idEquipaVisitante},{idArbitro},{idEstadio},{nFaltasVisitada},{nFaltasVisitante},{posseDeBolaVisitada},{posseDeBolaVisitante},{cantosVisitada},{cantosVisitante},{rematesVisitada},{rematesVisitante},{passesCompletosVisitada},{passesCompletosVisitante},{rematesABalizaVisitada},{rematesABalizaVisitante},{golosVisitada},{golosVisitante});\n')
 file.close()
 
     

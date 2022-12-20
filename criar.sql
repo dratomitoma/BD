@@ -23,7 +23,7 @@ CREATE TABLE Grupo(
 CREATE TABLE Estado(
     tipoEstado VARCHAR(255) PRIMARY KEY,
 
-    CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'pre-eliminatorias' OR tipoEstado == 'fase-de-grupos' OR tipoEstado == 'oitavos-de-final' OR tipoEstado == 'quartos-de-final' OR tipoEstado == 'semi-final' OR tipoEstado == 'final')
+    CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'Pre-eliminatorias' OR tipoEstado == 'Fase-de-grupos' OR tipoEstado == 'Oitavos-de-final' OR tipoEstado == 'Quartos-de-final' OR tipoEstado == 'Semi-final' OR tipoEstado == 'Final')
 );
 
 CREATE TABLE Treinador(
