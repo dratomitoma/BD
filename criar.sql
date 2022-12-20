@@ -97,6 +97,11 @@ CREATE TABLE EstatisticasJogador(
     faltasCometidas TINYINT NOT NULL,
     golosDefendidos INT NOT NULL,
 
+    idJogador INT,
+    idJogo INT,
+    FOREIGN KEY (idJogador) REFERENCES Jogador(idJogador) ON UPDATE CASCADE,
+    FOREIGN KEY (idJogo) REFERENCES Jogo(idJogo) ON UPDATE CASCADE,
+
     CHECK (golosMarcados >= 0),
     CHECK (assistencias >= 0),
     CHECK (passesRealizados >= 0),
