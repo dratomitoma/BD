@@ -9,14 +9,14 @@ import random
 import math
 
 listanomes=[ "James","Mary"
-,"Robert" ,"Patricia"
-,"John" ,"Jennifer"
-,"Michael" ,"Linda"
-,"David" ,"Elizabeth"
-,"William" ,"Barbara"
-,"Richard" ,"Susan" 	
+,"Robert","Patricia"
+,"John","Jennifer"
+,"Michael","Linda"
+,"David","Elizabeth"
+,"William","Barbara"
+,"Richard","Susan" 	
 ,"Joseph","Jessica" 	
-,"Thomas" 	,"Sarah"
+,"Thomas" ,"Sarah"
 ,"Charles"   ,"Karen"
 ,"Christopher"   ,"Lisa"
 ,"Daniel"   ,"Nancy"
@@ -336,17 +336,80 @@ listaequipasxdddd=[
     "The Strongest",
     "América Mineiro"
 ]
-listafase=[
-    "pre-eliminatorias","fase-de-grupos","oitavos-de-final","quartos-de-final","semi-final","final"
-]
-listapos=[
-    "GR","DD","DC","DE","MDC","MC","MCO","MD","ME","AC","PL","ED","EE"
-    ]
-listaresultados=[
-    "0-0","0-1","1-0","1-1","2-0","2-1","0-2","1-2","2-2","3-0","3-1","3-2","0-3","1-3","2-3","3-3","4-0","4-1","4-2","4-3","0-4","1-4","2-4","3-4","4-4","5-0","5-1","5-2","5-3","5-4","0-5","1-5","2-5","3-5","4-5","5-5"
-]
+listafase=["Pre-eliminatorias","Fase-de-grupos","Oitavos-de-final","Quartos-de-final","Semi-final","Final"]
+listapos=["GR","DD","DC","DE","MDC","MC","MCO","MD","ME","AC","PL","ED","EE"]
 grupos=["A","B","C","D","E","F","G","H"]
+estilodejogo=["Tiki-taka","Park the bus","Counter-attack","Gegenpress","Long ball","NULL"]
+treinadores=[
+"Graham Potter",
+"Massimiliano Allegri",
+"Mikel Arteta",
+"Maurizio Sarri",
+"Zinedine Zidane",
+"Simone Inzaghi",
+"Didier Deschamps",
+"Luis Enrique",
+"Brendan Rodgers",
+"Carlo Ancelotti",
+"Stefano Pioli",
+"Lionel Scaloni",
+"Julen Lopetegui",
+"Ralf Rangnick",
+"Marcelo Bielsa",
+"Steven Gerrard",
+"David Moyes",
+"Marco Rose",
+"Gian Piero Gasperini",
+"Unai Emery",
+"Erik ten Hag",
+"Kasper Hjulmand",
+"Mauricio Pochettino",
+"Gareth Southgate",
+"Julian Nagelsmann",
+"Diego Simeone",
+"Roberto Mancini",
+"Hans-Dieter Flick",
+"Antonio Conte",
+"Jurgen Klopp",
+"Thomas Tuchel",
+"Pep Guardiola"]
+estadios=[
+"Presidente Juan Domingo Perón",
+"Libertadores de América",
+"Nemesio Camacho El Campín",
+"Nacional Julio Martínez Prádanos",
+"Gran Parque Central",
+"Sudamericano Félix Capriles",
+"Estadio George Capwell",
+"Estadio Alberto Gallardo",
+"Estadio Olímpico Atahualpa"]
 file = open('deetznuts.txt','a')
+for grupid in grupos:
+    file.write(f'INSERT INTO Grupo VALUES("{grupid}");\n')
+for tipo in listafase:
+    file.write(f'INSERT INTO Estado VALUES("{tipo}");\n')
+for i in range (len(treinadores)):
+    randindex=random.randrange(len(estilodejogo))
+    tatica=estilodejogo[randindex]
+    if(tatica=="NULL"):
+        file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]}");\n')
+    else:
+        file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]}","{tatica}");\n')   
+for i in range (len(listaequipasxdddd)):
+    nome=listaequipasxdddd[i]
+    jogosjogados=random.randint(1,14)
+    nPontos=random.randint(0,18)
+    classificacao=random.randint(1,4)
+    golosMarcados=random.randint(0,25)
+    golosSofridos=random.randint(0,25)
+    vitorias=random.randint(0,14)
+    derrotas=random.randint(0,14-vitorias)
+    empates=random.randint(0,14-vitorias-derrotas)
+    randindex=random.randrange(len(grupos))
+    idGrupo=grupos[randindex]
+    randindex=random.randrange(len(listafase))
+    fase=listafase[randindex]
+    file.write(f'INSERT INTO Equipa VALUES({i+1},"{nome}",{jogosjogados},{nPontos},{classificacao},{golosMarcados},{golosSofridos},{vitorias},{derrotas},{empates},"{idGrupo}","{fase}",{i+1});\n')           
 for i in range (17*len(listaequipasxdddd)):
     randindex=random.randrange(len(listanomes))
     nome=listanomes[randindex]+' '
@@ -363,22 +426,9 @@ for i in range (17*len(listaequipasxdddd)):
     randindex=random.randrange(len(listapos))
     pos=listapos[randindex]
     idade=random.randint(17,40)
-    file.write(f'INSERT INTO Jogador VALUES({i+1},"{nome}","{nomequipa}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},"{pos}",{idade});\n')
-for i in range (len(listaequipasxdddd)):
-    nome=listaequipasxdddd[i]
-    jogosjogados=random.randint(1,14)
-    nPontos=random.randint(0,18)
-    classificacao=random.randint(1,4)
-    golosMarcados=random.randint(0,25)
-    golosSofridos=random.randint(0,25)
-    vitorias=random.randint(0,14)
-    derrotas=random.randint(0,14-vitorias)
-    empates=random.randint(0,14-vitorias-derrotas)
-    file.write(f'INSERT INTO Equipa VALUES({i+1},"{nome}",{jogosjogados},{nPontos},{classificacao},{golosMarcados},{golosSofridos},{vitorias},{derrotas},{empates});\n')   
-for grupid in grupos:
-    file.write(f'INSERT INTO Grupo VALUES("{grupid}");\n')
-for tipo in listafase:
-    file.write(f'INSERT INTO Estado VALUES("{tipo}");\n')
+    idEquipa=random.randint(1,32)
+    file.write(f'INSERT INTO Jogador VALUES({i+1},"{nome}","{nomequipa}",{ngolos},"{pais}",{ncamisola},{jgosjogados},{tmpjogado},"{pos}",{idade},{idEquipa});\n')
+
 for i in range (40):
     nFaltasVisitada=random.randint(0,15)
     nFaltasVisitante=random.randint(0,15)
@@ -414,6 +464,12 @@ for i in range (40):
     idade=random.randint(17,85)
     nivel=random.randint(1,9)
     file.write(f'INSERT INTO Arbitro VALUES({idArbitro + 1},"{nomeArbitro}",{idade},{nivel});\n')
+
+for i in range (len(estadios)):
+    capacidade=random.randint(18000,64161)
+    ano=random.randint(1900,1961)
+    file.write(f'INSERT INTO Estadios VALUES({i + 1},"{estadios[i]}",{capacidade},{ano});\n')
+    
 for i in range (40):
     randindex3 = random.randrange(len(listaequipasxdddd))
     randindex4 = random.randrange(len(listaequipasxdddd))
@@ -421,7 +477,21 @@ for i in range (40):
     randindex1=random.randrange(len(listafase))
     eliminatoria=listafase[randindex1]
     dataJogo=str(random.randint(1,28))+"/"+str(random.randint(1,12))+"/"+str(random.randint(2021,2022))
-    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}""{dataJogo}");\n')
+    nFaltasVisitada=random.randint(0,15)
+    nFaltasVisitante=random.randint(0,15)
+    posseDeBolaVisitada=random.randint(20,100)
+    posseDeBolaVisitante=100-posseDeBolaVisitada
+    cantosVisitada=random.randint(0,10)
+    cantosVisitante=random.randint(0,10)
+    rematesVisitada=random.randint(0,15)
+    rematesVisitante=random.randint(0,15)
+    passesCompletosVisitada=random.randint(0,800)
+    passesCompletosVisitante=random.randint(0,800)
+    rematesABalizaVisitada=random.randint(0,7)
+    rematesABalizaVisitante=random.randint(0,7)
+    golosVisitada=random.randint(0,10)
+    golosVisitante=random.randint(0,10)
+    file.write(f'INSERT INTO Jogo VALUES("{idJogo}","{eliminatoria}","{dataJogo}",{nFaltasVisitada},{nFaltasVisitante},{posseDeBolaVisitada},{posseDeBolaVisitante},{cantosVisitada},{cantosVisitante},{rematesVisitada},{rematesVisitante},{passesCompletosVisitada},{passesCompletosVisitante},{rematesABalizaVisitada},{rematesABalizaVisitante},{golosVisitada},{golosVisitante});\n')
 file.close()
 
     
