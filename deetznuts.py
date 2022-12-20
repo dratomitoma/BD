@@ -392,7 +392,7 @@ for i in range (len(treinadores)):
     randindex=random.randrange(len(estilodejogo))
     tatica=estilodejogo[randindex]
     if(tatica=="NULL"):
-        file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]}");\n')
+        file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]},NULL");\n')
     else:
         file.write(f'INSERT INTO Treinador VALUES({i + 1},"{treinadores[i]}","{tatica}");\n')   
 for i in range (len(listaequipasxdddd)):
