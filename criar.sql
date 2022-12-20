@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS EstatisticasJogador;
 DROP TABLE IF EXISTS Jogador;
 DROP TABLE IF EXISTS Equipa;
 DROP TABLE IF EXISTS Treinador;
-DROP TABLE IF EXISTS Estado;
+DROP TABLE IF EXISTS Estados;
 DROP TABLE IF EXISTS Grupo;
 
 
@@ -20,7 +20,7 @@ CREATE TABLE Grupo(
     CONSTRAINT check_idGrupo CHECK (idGrupo == 'A' OR idGrupo == 'B' OR idGrupo == 'C' OR idGrupo == 'D' OR idGrupo == 'E' OR idGrupo == 'F' OR idGrupo == 'G' OR idGrupo == 'H')
 );
 
-CREATE TABLE Estado(
+CREATE TABLE Estados(
     tipoEstado VARCHAR(255) PRIMARY KEY,
 
     CONSTRAINT check_tipoEstado CHECK (tipoEstado == 'Pre-eliminatorias' OR tipoEstado == 'Fase-de-grupos' OR tipoEstado == 'Oitavos-de-final' OR tipoEstado == 'Quartos-de-final' OR tipoEstado == 'Semi-final' OR tipoEstado == 'Final')
@@ -47,13 +47,12 @@ CREATE TABLE Equipa(
     idGrupo VARCHAR(1),
     tipoEstado VARCHAR(255),
     idTreinador INT,
-    FOREIGN KEY (idGrupo) REFERENCES Grupo(idGrupo) ON DELETE CASCADE,
-    FOREIGN KEY (tipoEstado) REFERENCES Estado(tipoEstado) ON DELETE CASCADE,
-    FOREIGN KEY (idTreinador) REFERENCES Treinador(idTreinador) ON DELETE CASCADE,
+    FOREIGN KEY (idGrupo) REFERENCES Grupo(idGrupo) ,
+    FOREIGN KEY (tipoEstado) REFERENCES Estados(tipoEstado) ,
+    FOREIGN KEY (idTreinador) REFERENCES Treinador(idTreinador) ,
 
     CHECK (idEquipa >= 1),
     CHECK (jogosJogados >= 0),
-    CHECK (golosTotais >= 0),
     CHECK (nPontos >= 0),
     CONSTRAINT check_classificacao CHECK (classificacao <= 4 AND classificacao >= 1),
     CHECK (golosMarcados >= 0),
@@ -76,7 +75,7 @@ CREATE TABLE Jogador(
     idade TINYINT NOT NULL,
 
     idEquipa INT,
-    FOREIGN KEY (idEquipa) REFERENCES Equipa(idEquipa) ON DELETE CASCADE,
+    FOREIGN KEY (idEquipa) REFERENCES Equipa(idEquipa) ,
 
 
     CHECK (idJogador >= 1),
@@ -150,11 +149,11 @@ CREATE TABLE Jogo(
     golosVisitante INT NOT NULL,
 
 
-    FOREIGN KEY (eliminatoria) REFERENCES Estado(tipoEstado) ON DELETE CASCADE,
-    FOREIGN KEY (idArbitro) REFERENCES Arbitro(idArbitro) ON DELETE CASCADE,
-    FOREIGN KEY (idEstadio) REFERENCES Estadio(idEstadio) ON DELETE CASCADE,
-    FOREIGN KEY (idEquipaVisitada) REFERENCES Equipa(idEquipa) ON DELETE CASCADE,
-    FOREIGN KEY (idEquipaVisitante) REFERENCES Equipa(idEquipa) ON DELETE CASCADE,
+    FOREIGN KEY (eliminatoria) REFERENCES Estados(tipoEstado),
+    FOREIGN KEY (idEquipaVisitada) REFERENCES Equipa(idEquipa),
+    FOREIGN KEY (idEquipaVisitante) REFERENCES Equipa(idEquipa),
+    FOREIGN KEY (idArbitro) REFERENCES Arbitro(idArbitro),
+    FOREIGN KEY (idEstadio) REFERENCES Estadio(idEstadio),
 
 
     CHECK (nFaltasVisitada >= 0),
@@ -177,7 +176,7 @@ CREATE TABLE Jogo(
 
 
 SELECT * FROM Grupo;
-SELECT * FROM Estado;
+SELECT * FROM Estados;
 SELECT * FROM Treinador;
 SELECT * FROM Equipa;
 SELECT * FROM Jogador;
