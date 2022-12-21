@@ -1,35 +1,39 @@
 --Atualiza o número de pontos da ambas as equipas após um jogo durante a fase de groupos
 CREATE TRIGGER updateGroupPoints
-after insert on Jogo
-For each row
-Begin
-    case 
-    when Jogo.eliminatoria = 'Fase-de-grupos'
-    then DECLARE pontosCasa, pontosFora INT
-        case
-            when new.golosVisitada > new.golosVisitante
-            then set pontosCasa = 3
-            when new.golosVisitada = new.golosVisitante
-            then set pontosCasa = 1
-            when new.golosVisitada < new.golosVisitante
-            then set pontosCasa = 0
-        end
+AFTER INSERT ON Jogo
+FOR EACH ROW
+BEGIN
+    CREATE TABLE temp(pontos INT);
 
-        case
-            when new.golosVisitada > new.golosVisitante
-            then set pontosFora = 0
-            when new.golosVisitada = new.golosVisitante
-            then set pontosFora = 1
-            when new.golosVisitada < new.golosVisitante
-            then set pontosFora = 3
-        end
+    INSERT INTO temp (pontos) values (
+    SELECT
+        CASE
+            WHEN new.golosVisitada > new.golosVisitante THEN 3
+            WHEN new.golosVisitada = new.golosVisitante THEN 1
+            WHEN new.golosVisitada < new.golosVisitante THEN 0
+        END;
+    )
 
-        update Equipa
-        set Equipa.nPontos = Equipa.nPontos + pontosCasa
-        where Equipa.idEquipa = new.idEquipaVisitada
+    UPDATE Equipa
+    SET nPontos = nPontos + (SELECT pontos FROM temp)
+    WHERE idEquipa = new.idEquipaVisitada;
 
-        update Equipa
-        set Equipa.nPontos = Equipa.nPontos + pontosFora
-        where Equipa.idEquipa = new.idEquipaVisitante
-    end
-end;
+    DELETE FROM temp;
+
+    INSERT INTO temp (pontos) values (
+    SELECT
+        CASE
+            WHEN new.golosVisitada > new.golosVisitante THEN 0
+            WHEN new.golosVisitada = new.golosVisitante THEN 1
+            WHEN new.golosVisitada < new.golosVisitante THEN 3
+        END;
+    )
+   
+    UPDATE Equipa
+    SET nPontos = nPontos + (SELECT pontos FROM temp)
+    WHERE idEquipa = new.idEquipaVisitante;
+
+    DELETE FROM temp;
+    Drop table temp;
+END;
+
