@@ -53,7 +53,7 @@ CREATE TABLE Equipa(
 
     CHECK (idEquipa >= 1),
     CHECK (jogosJogados >= 0),
-    CHECK (nPontos >= 0),
+    CONSTRAINT check_nPontos CHECK (nPontos >= 0 AND nPontos <= 18),
     CONSTRAINT check_classificacao CHECK (classificacao <= 4 AND classificacao >= 1),
     CHECK (golosMarcados >= 0),
     CHECK (golosSofridos >= 0),
@@ -103,7 +103,10 @@ CREATE TABLE Estadio(
     idEstadio INT PRIMARY KEY,
     nomeEstadio VARCHAR(255) not NULL,
     capacidade INT NOT NULL,
-    anoInauguracao INT NOT NULL
+    anoInauguracao INT NOT NULL,
+
+    CHECK (capacidade >= 0),
+    CHECK (anoInauguracao >= 1860)
 );
 
 CREATE TABLE Jogo(
