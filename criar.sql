@@ -29,12 +29,14 @@ CREATE TABLE Estados(
 CREATE TABLE Treinador(
     idTreinador INT PRIMARY KEY,
     nomeTreinador VARCHAR(255) NOT NULL,
-    estiloDeJogo VARCHAR(255)
+    estiloDeJogo VARCHAR(255),
+
+    CONSTRAINT check_estiloDeJogo CHECK (estiloDeJogo == 'Tiki-taka' OR estiloDeJogo == 'Park the bus' OR estiloDeJogo == 'Long ball' OR estiloDeJogo == 'Counter-attack' OR estiloDeJogo == 'Gegenpress')
 );
 
 CREATE TABLE Equipa(
     idEquipa INT PRIMARY KEY,
-    nomeEquipa VARCHAR(255),
+    nomeEquipa VARCHAR(255) NOT NULL,
     jogosJogados TINYINT NOT NULL,
     nPontos TINYINT NOT NULL,
     classificacao TINYINT NOT NULL,
@@ -82,7 +84,7 @@ CREATE TABLE Jogador(
     CHECK (nGolos >= 0),
     CONSTRAINT check_numero CHECK (numero >=1 AND numero<=99),
     CHECK (jogosJogados >= 0),
-    CONSTRAINT check_tempoJogado CHECK (tempoJogado >= jogosJogados * 1 AND tempoJogado <= jogosJogados * 90),
+    CHECK (tempoJogado >= jogosJogados * 1),
     CONSTRAINT check_posicao CHECK (posicao == 'GR' OR posicao == 'DD' OR posicao == 'DC' OR posicao == 'DE' OR posicao == 'MDC' OR posicao == 'MC' OR posicao == 'MCO' OR posicao == 'MD' OR posicao == 'ME' OR posicao == 'AC' OR posicao == 'PL' OR posicao == 'ED' OR posicao == 'EE'),
     CHECK (idade >= 14 AND idade <= 40)
 );
@@ -90,7 +92,7 @@ CREATE TABLE Jogador(
 
 CREATE TABLE Arbitro(
     idArbitro INT PRIMARY KEY,
-    nomeArbitro VARCHAR(255),
+    nomeArbitro VARCHAR(255) NOT NULL,
     idade TINYINT NOT NULL,
     nivel TINYINT NOT NULL,
 
@@ -101,7 +103,7 @@ CREATE TABLE Arbitro(
 
 CREATE TABLE Estadio(
     idEstadio INT PRIMARY KEY,
-    nomeEstadio VARCHAR(255) not NULL,
+    nomeEstadio VARCHAR(255) NOT NULL,
     capacidade INT NOT NULL,
     anoInauguracao INT NOT NULL,
 
