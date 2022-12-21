@@ -186,14 +186,3 @@ CREATE TABLE EstatisticasJogador(
 );
 
 .read povoar.sql
-
-
-SELECT * FROM Grupo;
-SELECT * FROM Estados;
-SELECT * FROM Treinador;
-SELECT * FROM Equipa;
-SELECT * FROM Jogador;
-SELECT * FROM Arbitro;
-SELECT * FROM Estadio;
-SELECT * FROM Jogo;
-SELECT * FROM EstatisticasJogador;
