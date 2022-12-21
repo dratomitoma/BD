@@ -1,1 +1,0 @@
-Drop Trigger if exists trigger2

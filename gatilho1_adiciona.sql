@@ -1,5 +1,5 @@
 --Após se atualizar a estatistica de um jogador num jogo em particular (EstatisticasJogador) aplicar as mudanças apropriadas em Jogador
-CREATE TRIGGER trigger1
+CREATE TRIGGER atualizarJogador
 AFTER insert on EstatisticasJogador 
 For each row
 Begin

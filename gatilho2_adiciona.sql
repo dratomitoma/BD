@@ -1,5 +1,5 @@
---Levantar erro se tentar adicionar uma equipa com um treinador j� em outra equipa
-CREATE TRIGGER trigger2
+--Levantar erro se tentar adicionar uma equipa com um treinador já em outra equipa
+CREATE TRIGGER checkInsertTreinador
 Before insert on Equipa   
 For each row
 When new.idTreinador=(select idTreinador from equipa where idTreinador=new.idTreinador)

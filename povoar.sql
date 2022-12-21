@@ -47,7 +47,7 @@ INSERT INTO Treinador VALUES(32,'Pep Guardiola','Tiki-taka');
 INSERT INTO Equipa VALUES(1,'Palmeiras',14,6,1,9,23,8,0,3,'C','Final',1);
 INSERT INTO Equipa VALUES(2,'River Plate',13,16,1,13,10,6,4,3,'D','Oitavos-de-final',2);
 INSERT INTO Equipa VALUES(3,'Boca Juniors',7,10,1,14,4,6,4,2,'E','Final',3);
-INSERT INTO Equipa VALUES(4,'Flamengo',9,16,1,6,3,8,2,2,'B','Fase-de-grupos',4);
+INSERT INTO Equipa VALUES(4,'Flamengo',9,14,1,6,3,8,2,2,'B','Fase-de-grupos',4);
 INSERT INTO Equipa VALUES(5,'Nacional',9,9,4,12,17,14,0,0,'A','Fase-de-grupos',5);
 INSERT INTO Equipa VALUES(6,'Peñarol',6,13,2,4,7,0,8,5,'D','Pre-eliminatorias',6);
 INSERT INTO Equipa VALUES(7,'Atlético Mineiro',12,12,2,15,6,14,0,0,'E','Final',7);
